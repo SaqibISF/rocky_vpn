@@ -1,0 +1,55 @@
+import React, { FC } from "react";
+import Section from "./Section";
+import { Card, CardBody, CardHeader } from "@heroui/react";
+import Image from "next/image";
+
+const ServicesSection: FC = () => (
+  <Section
+    title="Services"
+    heading="Elevate Your Online Experience"
+    description="Our services are designed to enhance your online experience, providing a perfect blend of security, accessibility, and convenience."
+  >
+    <div className="w-full grid lg:grid-cols-2 gap-6">
+      {[
+        {
+          imageSrc: "/services-section-card-1-image.png",
+          heading: "Data Encryption",
+          title: "Stay Connected Securely",
+          description:
+            "Encrypts your online activities with military-grade encryption, ensuring your data remains confidential and shielded from prying eyes.",
+        },
+        {
+          imageSrc: "/services-section-card-2-image.png",
+          heading: "High-Speed",
+          title: "Optimize Your Connection",
+          description:
+            "With just a tap, our lightning-fast tests provide accurate results, so you can gauge your internet's performance.",
+        },
+      ].map((item) => (
+        <Card key={item.imageSrc} className="space-y-4 px-2 sm:px-16 py-2 sm:py-16 mx-auto bg-transparent shadow-none">
+          <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+            <Image
+              className="rounded-2xl w-full h-auto"
+              src={item.imageSrc}
+              alt="imag not founded"
+              width={0}
+              height={0}
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={item.imageSrc}
+            />
+          </CardHeader>
+          <CardBody className="sm:space-y-4 space-y-3">
+            <span className="text-accent sm:text-2xl text-xl font-bold">{item.heading}</span>
+            <h4 className="sm:text-3xl text-2xl font-bold">{item.title}</h4>
+            <small className="text-default-500 sm:text-xl text-lg font-medium">
+              {item.description}
+            </small>
+          </CardBody>
+        </Card>
+      ))}
+    </div>
+  </Section>
+);
+
+export default ServicesSection;
