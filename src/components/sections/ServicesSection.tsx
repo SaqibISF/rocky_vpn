@@ -29,7 +29,7 @@ const ServicesSection: FC = () => (
         <Card key={item.imageSrc} className="space-y-4 px-2 sm:px-16 py-2 sm:py-16 mx-auto bg-transparent shadow-none">
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
             <Image
-              className="rounded-2xl w-full h-auto"
+              className="w-full h-auto"
               src={item.imageSrc}
               alt="imag not founded"
               width={0}

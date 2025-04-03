@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { IconSvgProps } from "@/types/svg-props";
 
-export const MoonFilledIcon: FC<IconSvgProps> = ({
+const MoonFilledIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -22,3 +22,5 @@ export const MoonFilledIcon: FC<IconSvgProps> = ({
     />
   </svg>
 );
+
+export default MoonFilledIcon;

@@ -44,7 +44,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <head />
       <body
-        className={cn("font-sans antialiased", fontSans.variable)}
+        className={cn("bg-[#FFFFFF] dark:bg-[#0F0F0F] text-foreground font-sans antialiased", fontSans.variable)}
       >
         <Providers
           themeProps={{ attribute: "class", defaultTheme: "dark" }}

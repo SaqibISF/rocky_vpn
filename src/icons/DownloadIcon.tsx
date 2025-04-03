@@ -19,7 +19,7 @@ const DownloadIcon: FC<IconSvgProps> = ({
       <path
         id="Icon"
         d="M4.5 20.3827C4.90471 20.778 5.45361 21 6.02595 21H18.9741C19.5464 21 20.0953 20.778 20.5 20.3827M12.5012 3V14.9425M12.5012 14.9425L17.4338 10.3793M12.5012 14.9425L7.56859 10.3793"
-        stroke="white"
+        stroke="currentColor"
         strokeWidth="2.25"
         strokeLinecap="round"
         strokeLinejoin="round"
