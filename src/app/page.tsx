@@ -1,6 +1,14 @@
 "use client";
 import React, { FC } from "react";
-import { DevicesSection, FeaturesSection, GlobalServerNetworkSection, HomeSection, ServicesSection } from "@/components/sections";
+import {
+  DevicesSection,
+  FAQSection,
+  FeaturesSection,
+  GlobalServerNetworkSection,
+  HomeSection,
+  PricingSection,
+  ServicesSection,
+} from "@/components/sections";
 
 const HomePage: FC = () => {
   return (
@@ -10,6 +18,8 @@ const HomePage: FC = () => {
       <ServicesSection />
       <GlobalServerNetworkSection />
       <DevicesSection />
+      <PricingSection />
+      <FAQSection />
     </>
   );
 };

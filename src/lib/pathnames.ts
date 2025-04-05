@@ -8,6 +8,8 @@ export const SERVERS_PAGE_PATH = "/servers";
 
 export const PRICING_PAGE_PATH = "/pricing";
 
+export const CONTACT_US_PAGE_PATH = "/contact-us";
+
 export const BUSINESS_VPN_PAGE_PATH = "/business-vpn";
 
 export const LOGIN_PAGE_PATH = "/login";
