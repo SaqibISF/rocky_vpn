@@ -15,3 +15,5 @@ export const BUSINESS_VPN_PAGE_PATH = "/business-vpn";
 export const LOGIN_PAGE_PATH = "/login";
 
 export const SIGNUP_PAGE_PATH = "/signup";
+
+export const PRIVACY_POLICY_PAGE_PATH = "/privacy-policy";

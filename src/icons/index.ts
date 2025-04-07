@@ -11,6 +11,8 @@ import CheckedIcon from "./CheckedIcon";
 import PriceCardBackground1 from "./PriceCardBackground1";
 import PriceCardBackground2 from "./PriceCardBackground2";
 import PriceCardBackground3 from "./PriceCardBackground3";
+import GlobeIcon from "./GlobeIcon";
+import ChevronDownIcon from "./ChevronDownIcon";
 
 export {
   AppLogo,
@@ -26,4 +28,6 @@ export {
   PriceCardBackground1,
   PriceCardBackground2,
   PriceCardBackground3,
+  GlobeIcon,
+  ChevronDownIcon,
 };
