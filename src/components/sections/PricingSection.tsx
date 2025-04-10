@@ -1,3 +1,4 @@
+"use client";
 import React, { FC } from "react";
 import Section from "./Section";
 import { Button, Card, CardBody, CardFooter, CardHeader } from "@heroui/react";
@@ -61,7 +62,7 @@ const PricingSection: FC = () => {
             </CardHeader>
             <CardBody className="px-0 py-10 flex flex-col items-start gap-6">
               {plan.description.split(",").map((desc, index) => (
-                <div key={index} className="flex gap-2">
+                <div key={desc + index} className="flex gap-2">
                   <CheckedIcon />
                   <span className="text-default-500 text-sm font-medium">
                     {desc.trim()}

@@ -1,8 +1,10 @@
-import React, { FC, ReactNode, useEffect } from "react";
+"use client";
+import React, { FC, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import Navbar from "../Navbar";
 
 const Section: FC<{
+  onlyShowNavbar?: boolean;
   isHeroSection?: boolean;
   title?: string;
   heading?: string;
@@ -12,6 +14,7 @@ const Section: FC<{
   className?: string;
   children?: ReactNode;
 }> = ({
+  onlyShowNavbar,
   isHeroSection,
   title,
   heading,
@@ -24,43 +27,16 @@ const Section: FC<{
   const ParentComp = isHeroSection ? "main" : "section";
   const ChildComp = isHeroSection ? "section" : "div";
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.getElementById("navbar");
-      const heroSection = document.getElementById("hero-section");
-
-      if (navbar && heroSection) {
-        if (window.scrollY > heroSection.offsetTop + 16) {
-          navbar.classList.add("fixed");
-          navbar.classList.remove("sticky");
-          heroSection.classList.add("pt-20");
-          heroSection.classList.remove("pt-4");
-        } else {
-          navbar.classList.remove("fixed");
-          navbar.classList.add("sticky");
-          heroSection.classList.add("pt-4");
-          heroSection.classList.remove("pt-20");
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <ParentComp
-      id={isHeroSection ? "hero-section" : undefined}
+      id={isHeroSection || onlyShowNavbar ? "main-section" : undefined}
       className={cn(
         "w-full flex flex-col items-center justify-center relative",
-        isHeroSection ? "pt-4" : "",
+        isHeroSection || onlyShowNavbar ? "pt-4" : "",
         parentClassName
       )}
     >
-      {isHeroSection && <Navbar />}
+      {(isHeroSection || onlyShowNavbar) && <Navbar />}
       <ChildComp
         className={cn(
           "container w-full max-w-7xl flex flex-col flex-wrap items-center justify-center",
@@ -83,7 +59,7 @@ const Section: FC<{
         )}
 
         {subtitle && (
-          <span className="text-2xl font-semibold text-center mt-4 mb-6">
+          <span className="px-4 sm:text-xl text-base sm:leading-10 leading-9 font-medium md:w-2/3 text-center mt-4 mb-6">
             {subtitle}
           </span>
         )}

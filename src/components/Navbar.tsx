@@ -25,6 +25,7 @@ import {
   LOGIN_PAGE_PATH,
   PRICING_PAGE_PATH,
   SERVERS_PAGE_PATH,
+  WHAT_IS_A_VPN_PAGE_PATH,
 } from "@/lib/pathnames";
 
 const Navbar: FC = () => {
@@ -34,8 +35,8 @@ const Navbar: FC = () => {
       href: FEATURES_PAGE_PATH,
     },
     {
-      label: "Download",
-      href: DOWNLOADS_PAGE_PATH,
+      label: "What is a VPN?",
+      href: WHAT_IS_A_VPN_PAGE_PATH,
     },
     {
       label: "Servers",

@@ -1,8 +1,12 @@
+export const LOGIN_PAGE_PATH = "/login";
+
+export const SIGNUP_PAGE_PATH = "/signup";
+
 export const HOME_PAGE_PATH = "/";
 
 export const FEATURES_PAGE_PATH = "/features";
 
-export const DOWNLOADS_PAGE_PATH = "/downloads";
+export const WHAT_IS_A_VPN_PAGE_PATH = "/what-is-a-vpn";
 
 export const SERVERS_PAGE_PATH = "/servers";
 
@@ -12,8 +16,6 @@ export const CONTACT_US_PAGE_PATH = "/contact-us";
 
 export const BUSINESS_VPN_PAGE_PATH = "/business-vpn";
 
-export const LOGIN_PAGE_PATH = "/login";
-
-export const SIGNUP_PAGE_PATH = "/signup";
+export const DOWNLOADS_PAGE_PATH = "/downloads";
 
 export const PRIVACY_POLICY_PAGE_PATH = "/privacy-policy";

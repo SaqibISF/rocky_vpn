@@ -1,3 +1,4 @@
+import Section from "./Section";
 import HomeSection from "./HomeSection";
 import FeaturesSection from "./FeaturesSection";
 import ServicesSection from "./ServicesSection";
@@ -5,6 +6,10 @@ import GlobalServerNetworkSection from "./GlobalServerNetworkSection";
 import DevicesSection from "./DevicesSection";
 import PricingSection from "./PricingSection";
 import FAQSection from "./FAQSection";
+import AdvantagesSection from "./AdvantagesSection";
+import VPNBlogSection from "./VPNBlogSection";
+import AvailableDevicesSection from "./AvailableDevicesSection";
+import AllServersSection from "./AllServersSection";
 
 export {
   HomeSection,
@@ -14,4 +19,9 @@ export {
   DevicesSection,
   PricingSection,
   FAQSection,
+  Section,
+  AdvantagesSection,
+  VPNBlogSection,
+  AvailableDevicesSection,
+  AllServersSection,
 };

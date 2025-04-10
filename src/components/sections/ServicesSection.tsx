@@ -1,3 +1,4 @@
+"use client";
 import React, { FC } from "react";
 import Section from "./Section";
 import { Card, CardBody, CardHeader } from "@heroui/react";

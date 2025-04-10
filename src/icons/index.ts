@@ -13,6 +13,18 @@ import PriceCardBackground2 from "./PriceCardBackground2";
 import PriceCardBackground3 from "./PriceCardBackground3";
 import GlobeIcon from "./GlobeIcon";
 import ChevronDownIcon from "./ChevronDownIcon";
+import SecureIcon from "./SecureIcon";
+import WiFiProblemIcon from "./WiFiProblemIcon";
+import LogsIcon from "./LogsIcon";
+import LockIcon from "./LockIcon";
+import ServerStackIcon from "./ServerStackIcon";
+import BoostIcon from "./BoostIcon";
+import LocationIcon from "./LocationIcon";
+import ChatCheckIcon from "./ChatCheckIcon";
+import HideTextIcon from "./HideTextIcon";
+import LaptopCheckIcon from "./LaptopCheckIcon";
+import JoystickIcon from "./JoystickIcon";
+import YoutubeIcon from "./YoutubeIcon";
 
 export {
   AppLogo,
@@ -30,4 +42,16 @@ export {
   PriceCardBackground3,
   GlobeIcon,
   ChevronDownIcon,
+  SecureIcon,
+  WiFiProblemIcon,
+  LogsIcon,
+  LockIcon,
+  ServerStackIcon,
+  BoostIcon,
+  LocationIcon,
+  ChatCheckIcon,
+  HideTextIcon,
+  LaptopCheckIcon,
+  JoystickIcon,
+  YoutubeIcon,
 };

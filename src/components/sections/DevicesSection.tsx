@@ -1,8 +1,9 @@
+"use client";
 import React, { FC } from "react";
 import Section from "./Section";
 import { ArrowRightIcon } from "@/icons";
 import { Button } from "@heroui/react";
-import AvailableDevices from "./AvailableDevices";
+import { AvailableDevices } from "./AvailableDevicesSection";
 
 const DevicesSection: FC = () => (
   <Section
