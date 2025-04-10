@@ -4,7 +4,7 @@ import React, { FC, FormEvent, useState } from "react";
 import { AppLogo } from "@/icons";
 import LanguageChanger from "./LanguageChanger";
 import Link from "next/link";
-import { Button, Form, Input } from "@heroui/react";
+import { Button, Divider, Form, Input } from "@heroui/react";
 import { PRIVACY_POLICY_PAGE_PATH } from "@/lib/pathnames";
 
 const Footer: FC = () => {
@@ -44,7 +44,7 @@ const Footer: FC = () => {
           <LanguageChanger />
         </div>
 
-        <div className="w-full h-px bg-default-200" />
+        <Divider />
 
         <div className="w-full py-4 lg:py-6 grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-x-4 lg:gap-x-8 gap-y-8">
           {[
@@ -124,7 +124,7 @@ const Footer: FC = () => {
           ))}
         </div>
 
-        <div className="w-full h-px bg-default-200" />
+        <Divider />
 
         <div className="w-full flex flex-col md:flex-row md:justify-between gap-y-8 items-center py-4 lg:py-6">
           <div className="w-full flex flex-col gap-y-4 px-4">
@@ -187,7 +187,7 @@ const Footer: FC = () => {
           </div>
         </div>
 
-        <div className="w-full h-px bg-default-200" />
+        <Divider />
 
         <div className="w-full flex justify-between items-center py-4 lg:py-6">
           <div className="text-sm text-default-500">

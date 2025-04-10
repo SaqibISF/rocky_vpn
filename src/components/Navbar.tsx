@@ -123,7 +123,7 @@ const Navbar: FC = () => {
         <NavbarItem className="hidden md:flex gap-4">
           <ThemeSwitch />
           <Button
-            as={Link}
+            as={NextLink}
             href={LOGIN_PAGE_PATH}
             variant="bordered"
             className="rounded-full"
@@ -131,7 +131,7 @@ const Navbar: FC = () => {
             Login
           </Button>
           <Button
-            as={Link}
+            as={NextLink}
             href={DOWNLOADS_PAGE_PATH}
             color="primary"
             variant="shadow"

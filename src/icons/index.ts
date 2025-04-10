@@ -25,6 +25,10 @@ import HideTextIcon from "./HideTextIcon";
 import LaptopCheckIcon from "./LaptopCheckIcon";
 import JoystickIcon from "./JoystickIcon";
 import YoutubeIcon from "./YoutubeIcon";
+import EnvelopeIcon from "./EnvelopeIcon";
+import EyeSlashIcon from "./EyeSlashIcon";
+import EyeIcon from "./EyeIcon";
+import UserIcon from "./UserIcon";
 
 export {
   AppLogo,
@@ -54,4 +58,8 @@ export {
   LaptopCheckIcon,
   JoystickIcon,
   YoutubeIcon,
+  EnvelopeIcon,
+  EyeSlashIcon,
+  EyeIcon,
+  UserIcon,
 };

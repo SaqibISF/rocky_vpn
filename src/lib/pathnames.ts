@@ -2,6 +2,10 @@ export const LOGIN_PAGE_PATH = "/login";
 
 export const SIGNUP_PAGE_PATH = "/signup";
 
+export const FORGOT_PASSWORD_PAGE_PATH = "/forgot-password";
+
+export const RESET_PASSWORD_PAGE_PATH = "/reset-password";
+
 export const HOME_PAGE_PATH = "/";
 
 export const FEATURES_PAGE_PATH = "/features";
@@ -19,3 +23,5 @@ export const BUSINESS_VPN_PAGE_PATH = "/business-vpn";
 export const DOWNLOADS_PAGE_PATH = "/downloads";
 
 export const PRIVACY_POLICY_PAGE_PATH = "/privacy-policy";
+
+export const DASHBOARD_PAGE_PATH = "/dashboard";

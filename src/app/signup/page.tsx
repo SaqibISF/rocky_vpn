@@ -1,0 +1,156 @@
+"use client";
+
+import React, { FC, useState } from "react";
+import { Section } from "@/components/sections";
+import { EnvelopeIcon, EyeIcon, EyeSlashIcon, UserIcon } from "@/icons";
+import { LOGIN_PAGE_PATH } from "@/lib/pathnames";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Input,
+} from "@heroui/react";
+import Link from "next/link";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+const SignUpPage: FC = () => {
+  type SignUpData = { username: string; email: string; password: string };
+
+  const [isPasswordHide, setIsPasswordHide] = useState(true);
+  const togglePasswordHide = () => {
+    setIsPasswordHide((prev) => !prev);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    // setError,
+    clearErrors,
+  } = useForm<SignUpData>();
+
+  const signup: SubmitHandler<SignUpData> = async (data) => {
+    clearErrors();
+    console.log(data);
+  };
+
+  return (
+    <Section
+      isHeroSection
+      heading="Start Your Free VPN Trial"
+      description="We’re giving you 7 days to experience all the features of our high speed VPN network. No payment details are needed to start your trial."
+    >
+      <form onSubmit={handleSubmit(signup)} className="max-w-md w-full">
+        <Card className="p-6">
+          <CardHeader className="flex-col gap-2">
+            <h2 className="text-3xl font-semibold">Sign Up Now!</h2>
+            <p className="text-default-500 text-sm font-normal">
+              Create an account to continue
+            </p>
+          </CardHeader>
+          <CardBody className="gap-6">
+            <Input
+              label="Username"
+              labelPlacement="outside"
+              placeholder="Select your Username"
+              type="text"
+              endContent={
+                <UserIcon className="w-5 text-default-500 pointer-events-none" />
+              }
+              size="lg"
+              classNames={{
+                inputWrapper: "bg-transparent border",
+              }}
+              errorMessage={errors.username?.message}
+              {...register("username", {
+                required: "Select your username",
+                minLength: {
+                  value: 3,
+                  message: "Username must be at least 3 chars",
+                },
+              })}
+            />
+
+            <Input
+              label="Email"
+              labelPlacement="outside"
+              placeholder="you@example.com"
+              type="email"
+              endContent={
+                <EnvelopeIcon className="w-5 text-default-500 pointer-events-none" />
+              }
+              size="lg"
+              classNames={{
+                inputWrapper: "bg-transparent border",
+              }}
+              errorMessage={errors.email?.message}
+              {...register("email", {
+                required: "Enter email address",
+                minLength: {
+                  value: 2,
+                  message: "Enter email address",
+                },
+                pattern: {
+                  value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                  message:
+                    "Please enter valid email address\n e.g. username@domain.com",
+                },
+              })}
+            />
+
+            <Input
+              label="Password"
+              labelPlacement="outside"
+              placeholder="Enter your password"
+              type={isPasswordHide ? "password" : "text"}
+              endContent={
+                isPasswordHide ? (
+                  <EyeSlashIcon
+                    onClick={togglePasswordHide}
+                    className="w-5 text-default-500 cursor-default"
+                  />
+                ) : (
+                  <EyeIcon
+                    onClick={togglePasswordHide}
+                    className="w-5 text-default-500 cursor-default"
+                  />
+                )
+              }
+              size="lg"
+              classNames={{
+                inputWrapper: "bg-transparent border",
+              }}
+              errorMessage={errors.password?.message}
+              {...register("password", {
+                required: "Enter your password",
+                // minLength: {
+                //   value: 8,
+                //   message:
+                //     "Password must be at least 8 characters long",
+                // },
+              })}
+            />
+          </CardBody>
+          <CardFooter className="flex-col gap-4">
+            <Button type="submit" fullWidth size="lg" color="primary">
+              Sign Up
+            </Button>
+            <span className="text-sm font-normal">
+              Already have an account?{" "}
+              <Link
+                href={LOGIN_PAGE_PATH}
+                className="text-primary dark:text-primary-600 font-medium"
+              >
+                Login
+              </Link>
+            </span>
+          </CardFooter>
+        </Card>
+      </form>
+    </Section>
+  );
+};
+
+export default SignUpPage;
