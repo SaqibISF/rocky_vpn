@@ -29,6 +29,12 @@ import EnvelopeIcon from "./EnvelopeIcon";
 import EyeSlashIcon from "./EyeSlashIcon";
 import EyeIcon from "./EyeIcon";
 import UserIcon from "./UserIcon";
+import DashboardIcon from "./DashboardIcon";
+import SubscriptionIcon from "./SubscriptionIcon";
+import SettingsIcon from "./SettingsIcon";
+import SignOutIcon from "./SignOutIcon";
+import CreditCardIcon from "./CreditCardIcon";
+import VPNIcon from "./VPNIcon";
 
 export {
   AppLogo,
@@ -62,4 +68,10 @@ export {
   EyeSlashIcon,
   EyeIcon,
   UserIcon,
+  DashboardIcon,
+  SubscriptionIcon,
+  SettingsIcon,
+  SignOutIcon,
+  CreditCardIcon,
+  VPNIcon,
 };

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Section } from "@/components/sections";
-import { EnvelopeIcon, EyeIcon, EyeSlashIcon, UserIcon } from "@/icons";
+import { EnvelopeIcon, UserIcon } from "@/icons";
 import { LOGIN_PAGE_PATH } from "@/lib/pathnames";
 import {
   Button,
@@ -17,11 +17,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 const SignUpPage: FC = () => {
   type SignUpData = { username: string; email: string; password: string };
-
-  const [isPasswordHide, setIsPasswordHide] = useState(true);
-  const togglePasswordHide = () => {
-    setIsPasswordHide((prev) => !prev);
-  };
 
   const {
     register,
@@ -53,16 +48,11 @@ const SignUpPage: FC = () => {
           <CardBody className="gap-6">
             <Input
               label="Username"
-              labelPlacement="outside"
               placeholder="Select your Username"
               type="text"
               endContent={
                 <UserIcon className="w-5 text-default-500 pointer-events-none" />
               }
-              size="lg"
-              classNames={{
-                inputWrapper: "bg-transparent border",
-              }}
               errorMessage={errors.username?.message}
               {...register("username", {
                 required: "Select your username",
@@ -75,16 +65,11 @@ const SignUpPage: FC = () => {
 
             <Input
               label="Email"
-              labelPlacement="outside"
               placeholder="you@example.com"
               type="email"
               endContent={
                 <EnvelopeIcon className="w-5 text-default-500 pointer-events-none" />
               }
-              size="lg"
-              classNames={{
-                inputWrapper: "bg-transparent border",
-              }}
               errorMessage={errors.email?.message}
               {...register("email", {
                 required: "Enter email address",
@@ -102,26 +87,8 @@ const SignUpPage: FC = () => {
 
             <Input
               label="Password"
-              labelPlacement="outside"
               placeholder="Enter your password"
-              type={isPasswordHide ? "password" : "text"}
-              endContent={
-                isPasswordHide ? (
-                  <EyeSlashIcon
-                    onClick={togglePasswordHide}
-                    className="w-5 text-default-500 cursor-default"
-                  />
-                ) : (
-                  <EyeIcon
-                    onClick={togglePasswordHide}
-                    className="w-5 text-default-500 cursor-default"
-                  />
-                )
-              }
-              size="lg"
-              classNames={{
-                inputWrapper: "bg-transparent border",
-              }}
+              type="password"
               errorMessage={errors.password?.message}
               {...register("password", {
                 required: "Enter your password",

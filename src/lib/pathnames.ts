@@ -25,3 +25,8 @@ export const DOWNLOADS_PAGE_PATH = "/downloads";
 export const PRIVACY_POLICY_PAGE_PATH = "/privacy-policy";
 
 export const DASHBOARD_PAGE_PATH = "/dashboard";
+
+export const BILLING_DETAILS_PAGE_PATH =
+  DASHBOARD_PAGE_PATH + "/billing-details";
+
+export const SUBSCRIPTION_PAGE_PATH = DASHBOARD_PAGE_PATH + "/subscription";
