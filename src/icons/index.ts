@@ -35,6 +35,7 @@ import SettingsIcon from "./SettingsIcon";
 import SignOutIcon from "./SignOutIcon";
 import CreditCardIcon from "./CreditCardIcon";
 import VPNIcon from "./VPNIcon";
+import HeadphoneIcon from "./HeadphoneIcon";
 
 export {
   AppLogo,
@@ -74,4 +75,5 @@ export {
   SignOutIcon,
   CreditCardIcon,
   VPNIcon,
+  HeadphoneIcon,
 };

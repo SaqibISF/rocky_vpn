@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC, ReactNode, useEffect } from "react";
-import { HeroUIProvider } from "@heroui/react";
+import { HeroUIProvider, ToastProvider } from "@heroui/react";
 import { ThemeProvider, type ThemeProviderProps } from "next-themes";
 import { useRouter } from "next/navigation";
 
@@ -50,6 +50,7 @@ export const Providers: FC<{
   return (
     <HeroUIProvider navigate={router.push} className={className}>
       <ThemeProvider {...themeProps}>{children}</ThemeProvider>
+      <ToastProvider />
     </HeroUIProvider>
   );
 };

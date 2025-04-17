@@ -10,13 +10,13 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
-  Input,
 } from "@heroui/react";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Input from "@/components/Input";
 
 const SignUpPage: FC = () => {
-  type SignUpData = { username: string; email: string; password: string };
+  type SignUpData = { name: string; email: string; password: string };
 
   const {
     register,
@@ -47,14 +47,14 @@ const SignUpPage: FC = () => {
           </CardHeader>
           <CardBody className="gap-6">
             <Input
-              label="Username"
-              placeholder="Select your Username"
+              label="Name"
+              placeholder="Enter your Name"
               type="text"
               endContent={
                 <UserIcon className="w-5 text-default-500 pointer-events-none" />
               }
-              errorMessage={errors.username?.message}
-              {...register("username", {
+              errorMessage={errors.name?.message}
+              {...register("name", {
                 required: "Select your username",
                 minLength: {
                   value: 3,

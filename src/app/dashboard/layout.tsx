@@ -19,6 +19,7 @@ import {
 import { cn } from "@/lib/utils";
 import {
   BILLING_DETAILS_PAGE_PATH,
+  DASHBOARD_PAGE_PATH,
   SUBSCRIPTION_PAGE_PATH,
 } from "@/lib/pathnames";
 import Link from "next/link";
@@ -27,10 +28,16 @@ const SideBar: FC<{ className?: string }> = ({ className }) => (
   <aside className={cn("w-52 py-8", className)}>
     <ul>
       <li>
-        <div className="flex items-center gap-2 py-6 px-6">
+        <Button
+          as={Link}
+          href={DASHBOARD_PAGE_PATH}
+          variant="light"
+          radius="none"
+          className="py-9 px-6 w-full justify-stretch"
+        >
           <DashboardIcon />
           <span className="text-sm font-medium">Dashboard</span>
-        </div>
+        </Button>
         <Divider />
       </li>
 
