@@ -6,7 +6,7 @@ import { macBookBase64Src } from "@/lib/mac-book-base64";
 
 const DownloadsPage: FC = () => (
   <>
-    <Section isHeroSection className="flex-col lg:flex-row gap-y-10">
+    <Section isHeroSection className="flex-col lg:flex-row gap-y-10" isRightCornerGradient isCenterGradient>
       <div className="md:w-3/5 flex flex-col gap-y-6 px-4  text-center sm:text-left">
         <span className="text-accent text-xl font-bold">Rocky VPN</span>
         <h1 className="text-4xl sm:text-5xl font-bold leading-[3.5rem] md:leading-[5rem]">

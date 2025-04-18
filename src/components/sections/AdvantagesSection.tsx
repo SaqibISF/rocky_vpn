@@ -12,11 +12,26 @@ import {
   WiFiProblemIcon,
 } from "@/icons";
 
-const AdvantagesSection: FC<{ heading: string; subtitle?: string }> = ({
+const AdvantagesSection: FC<{
+  heading: string;
+  subtitle?: string;
+  isLeftCornerGradient?: boolean;
+  isRightCornerGradient?: boolean;
+  isCenterGradient?: boolean;
+}> = ({
   heading,
   subtitle,
+  isLeftCornerGradient,
+  isRightCornerGradient,
+  isCenterGradient,
 }) => (
-  <Section heading={heading} subtitle={subtitle}>
+  <Section
+    heading={heading}
+    subtitle={subtitle}
+    isLeftCornerGradient={isLeftCornerGradient}
+    isRightCornerGradient={isRightCornerGradient}
+    isCenterGradient={isCenterGradient}
+  >
     <div className="mt-10 grid lg:grid-cols-2 gap-4">
       {[
         {

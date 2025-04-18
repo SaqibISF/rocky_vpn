@@ -2,6 +2,7 @@
 import React, { FC } from "react";
 import Section from "./Section";
 import Image from "next/image";
+import { WorldMap } from "@/icons";
 
 const GlobalServerNetworkSection: FC = () => {
   return (
@@ -9,7 +10,28 @@ const GlobalServerNetworkSection: FC = () => {
       title="Global Server Network"
       heading="Ultra-Fast Servers Around the World"
       description="Choose among 1000+ high-speed VPN servers and enjoy fast and stable connections anywhere."
+      className="z-[1]"
+      isCenterGradient
     >
+      {/* <div
+        className="w-full h-[30rem] lg:h-[90rem] absolute top-28 left-0 right-0 -z-[1]"
+        style={{
+          backgroundImage: 'url("/world-map.png")',
+          backgroundSize: "100%",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div> */}
+
+      <WorldMap className="absolute top-28 -z-[1]" />
+
+      <div
+        className="w-full h-[49.75rem] absolute bottom-0 left-0 right-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(15, 15, 15, 0.00) 10.03%, #0F0F0F 65.02%)",
+        }}
+      ></div>
+
       <div className="w-full flex flex-col items-center justify-center">
         <Image
           className="rounded-2xl max-w-lg w-full h-auto"
@@ -21,7 +43,7 @@ const GlobalServerNetworkSection: FC = () => {
           placeholder="blur"
           blurDataURL="/global-server-network-section.png"
         />
-        <div className="w-full flex flex-wrap items-center justify-between lg:justify-center gap-16 text-center">
+        <div className="w-full flex flex-wrap items-center justify-between lg:justify-center gap-16 text-center z-[2]">
           {[
             { title: "100+", subtitle: "Countries" },
             { title: "1,000+", subtitle: "Servers" },

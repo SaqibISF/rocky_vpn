@@ -16,7 +16,7 @@ const ArrowRightIcon: FC<IconSvgProps> = ({
   >
     <path
       d="M13.8333 5L20.5 12M20.5 12L13.8333 19M20.5 12L4.5 12"
-      stroke="white"
+      stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"

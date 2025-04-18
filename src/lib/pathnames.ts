@@ -18,8 +18,6 @@ export const PRICING_PAGE_PATH = "/pricing";
 
 export const CONTACT_US_PAGE_PATH = "/contact-us";
 
-export const BUSINESS_VPN_PAGE_PATH = "/business-vpn";
-
 export const DOWNLOADS_PAGE_PATH = "/downloads";
 
 export const PRIVACY_POLICY_PAGE_PATH = "/privacy-policy";

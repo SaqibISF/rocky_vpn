@@ -10,6 +10,7 @@ const DevicesSection: FC = () => (
     title="Devices"
     heading="Available for All Your Devices"
     description="Connect to your devices, enjoy secure and private access to the internet — even on public Wi-Fi."
+    isRightCornerGradient
   >
     <div className="flex flex-col items-center justify-center gap-y-14">
       <AvailableDevices />

@@ -4,13 +4,7 @@ import React, { FC } from "react";
 import { Section } from "@/components/sections";
 import { EnvelopeIcon, UserIcon } from "@/icons";
 import { LOGIN_PAGE_PATH } from "@/lib/pathnames";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-} from "@heroui/react";
+import { Button, Card, CardBody, CardFooter, CardHeader } from "@heroui/react";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/components/Input";
@@ -36,8 +30,19 @@ const SignUpPage: FC = () => {
       isHeroSection
       heading="Start Your Free VPN Trial"
       description="We’re giving you 7 days to experience all the features of our high speed VPN network. No payment details are needed to start your trial."
+      isRightCornerGradient
     >
-      <form onSubmit={handleSubmit(signup)} className="max-w-md w-full">
+      <form
+        onSubmit={handleSubmit(signup)}
+        className="max-w-md w-full relative"
+      >
+        <div
+          className="w-full h-full rounded-xl absolute blur-[5.375rem] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
+          }}
+        ></div>
         <Card className="p-6">
           <CardHeader className="flex-col gap-2">
             <h2 className="text-3xl font-semibold">Sign Up Now!</h2>

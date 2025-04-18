@@ -36,6 +36,8 @@ import SignOutIcon from "./SignOutIcon";
 import CreditCardIcon from "./CreditCardIcon";
 import VPNIcon from "./VPNIcon";
 import HeadphoneIcon from "./HeadphoneIcon";
+import ShiningStar from "./ShiningStar";
+import WorldMap from "./WorldMap";
 
 export {
   AppLogo,
@@ -76,4 +78,6 @@ export {
   CreditCardIcon,
   VPNIcon,
   HeadphoneIcon,
+  ShiningStar,
+  WorldMap,
 };

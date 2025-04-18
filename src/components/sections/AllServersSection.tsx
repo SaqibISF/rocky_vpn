@@ -58,7 +58,7 @@ const AllServersSection: FC = () => {
   //   }, []);
 
   return (
-    <Section heading="All Servers Location">
+    <Section heading="All Servers Location" isLeftCornerGradient>
       <Table
         aria-label="VPN Servers"
         selectionMode="single"

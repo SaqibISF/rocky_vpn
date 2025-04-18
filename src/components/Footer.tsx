@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC, FormEvent, useState } from "react";
-import { AppLogo } from "@/icons";
+import { AppLogo, ShiningStar } from "@/icons";
 import LanguageChanger from "./LanguageChanger";
 import Link from "next/link";
 import { Button, Divider, Form, Input } from "@heroui/react";
@@ -37,8 +37,31 @@ const Footer: FC = () => {
   }
 
   return (
-    <footer className="w-full">
-      <div className="w-full max-w-7xl mx-auto px-4">
+    <footer className="w-full relative overflow-hidden">
+      <div
+        className="w-[21.875rem] h-[27.125rem] rounded-[27.125rem] absolute blur-[12.5rem] top-16 -right-10 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
+        }}
+      ></div>
+
+      <div
+        className="size-[34.875rem] rounded-[[34.875rem] absolute blur-[12.5rem] -bottom-8 left-4 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(130, 144, 255, 0.50) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
+        }}
+      ></div>
+
+      <div
+        className="w-full max-w-7xl mx-auto px-4"
+        style={{
+          backgroundImage: 'url("/stars.png")',
+          backgroundSize: "25rem",
+          backgroundRepeat: "revert",
+        }}
+      >
         <div className="w-full flex justify-between items-center py-12 lg:py-14">
           <AppLogo className="w-32 h-auto" />
           <LanguageChanger />
@@ -126,7 +149,8 @@ const Footer: FC = () => {
 
         <Divider />
 
-        <div className="w-full flex flex-col md:flex-row md:justify-between gap-y-8 items-center py-4 lg:py-6">
+        <div className="w-full flex flex-col md:flex-row md:justify-between gap-y-8 items-center py-6 lg:py-8 relative">
+          <ShiningStar className="absolute xl:left-40 lg:left-24 md:left-12 lg:top-0 md:-top-12 sm:top-6 sm:bottom-auto bottom-20 md:right-auto right-0 pointer-events-none" />
           <div className="w-full flex flex-col gap-y-4 px-4">
             <h1 className="text-5xl font-medium">Subscribe</h1>
             <p className="text-base text-default-500 lg:w-2/3 w-5/6">

@@ -23,10 +23,11 @@ const WhatIsVPNPage: FC = () => {
   return (
     <>
       <Section
-        onlyShowNavbar
+        isHeroSection
         heading="What is a VPN and how does it work?"
         subtitle="A complete guide to virtual private networks"
         description="A VPN, or virtual private network, is a secure tunnel between your device and the internet. VPNs protect you from snooping, interference, and censorship"
+        isRightCornerGradient
       >
         <Button
           variant="shadow"
@@ -46,6 +47,7 @@ const WhatIsVPNPage: FC = () => {
       <Section
         heading="Benefits of using a VPN"
         description="A VPN offers a wide range of benefits, whether you’re focused on securing your data, accessing restricted content, or improving your overall online experience. Here’s a closer look at how a VPN enhances your digital life:"
+        isRightCornerGradient
       >
         <div className="grid lg:grid-cols-2 gap-4">
           {[
@@ -113,11 +115,11 @@ const WhatIsVPNPage: FC = () => {
                 "This protocol is known for stability during network changes and is great for mobile users needing reliable connectivity.",
             },
             {
-                heading: "WireGuard®",
-                description:
-                  "A newer, lightweight protocol designed for top-tier performance and robust encryption.",
-              },
-            ].map(({ heading, description }) => (
+              heading: "WireGuard®",
+              description:
+                "A newer, lightweight protocol designed for top-tier performance and robust encryption.",
+            },
+          ].map(({ heading, description }) => (
             <div key={heading} className="w-3/4 mx-auto space-y-4 px-2">
               <h4 className="text-2xl font-semibold">{heading}</h4>
               <p className="text-default-600 text-base leading-7 font-normal">
@@ -130,7 +132,7 @@ const WhatIsVPNPage: FC = () => {
 
       <AdvantagesSection heading="Why choose RockyVPN?" />
 
-      <FAQSection />
+      <FAQSection isLeftCornerGradient />
     </>
   );
 };

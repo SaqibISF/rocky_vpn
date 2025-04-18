@@ -27,7 +27,17 @@ const ServicesSection: FC = () => (
             "With just a tap, our lightning-fast tests provide accurate results, so you can gauge your internet's performance.",
         },
       ].map((item) => (
-        <Card key={item.imageSrc} className="space-y-4 px-2 sm:px-16 py-2 sm:py-16 mx-auto bg-transparent shadow-none">
+        <Card
+          key={item.imageSrc}
+          className="space-y-4 px-2 sm:px-16 py-2 sm:py-16 mx-auto overflow-visible bg-transparent shadow-none relative"
+        >
+          <div
+            className="size-[33rem] rounded-[33rem] absolute blur-[6.25rem]"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(15, 15, 16, 0.00) 100%)",
+            }}
+          ></div>
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
             <Image
               className="w-full h-auto"
@@ -41,7 +51,9 @@ const ServicesSection: FC = () => (
             />
           </CardHeader>
           <CardBody className="sm:space-y-4 space-y-3">
-            <span className="text-accent sm:text-2xl text-xl font-bold">{item.heading}</span>
+            <span className="text-accent sm:text-2xl text-xl font-bold">
+              {item.heading}
+            </span>
             <h4 className="sm:text-3xl text-2xl font-bold">{item.title}</h4>
             <small className="text-default-500 sm:text-xl text-lg font-medium">
               {item.description}

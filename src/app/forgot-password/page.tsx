@@ -3,9 +3,7 @@
 import React, { FC } from "react";
 import { Section } from "@/components/sections";
 import { EnvelopeIcon } from "@/icons";
-import {
-  LOGIN_PAGE_PATH,
-} from "@/lib/pathnames";
+import { LOGIN_PAGE_PATH } from "@/lib/pathnames";
 import {
   Button,
   Card,
@@ -19,7 +17,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 const ForgotPasswordPage: FC = () => {
   type Data = { email: string };
-
 
   const {
     register,
@@ -36,7 +33,17 @@ const ForgotPasswordPage: FC = () => {
 
   return (
     <Section isHeroSection>
-      <form onSubmit={handleSubmit(submit)} className="max-w-md w-full text-center">
+      <form
+        onSubmit={handleSubmit(submit)}
+        className="max-w-md w-full text-center relative"
+      >
+        <div
+          className="w-full h-full rounded-xl absolute blur-[5.375rem] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
+          }}
+        ></div>
         <Card className="p-6">
           <CardHeader className="flex-col gap-2">
             <h2 className="text-3xl font-semibold">Forgot Password?</h2>

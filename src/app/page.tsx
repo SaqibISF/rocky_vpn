@@ -18,8 +18,8 @@ const HomePage: FC = () => {
       <ServicesSection />
       <GlobalServerNetworkSection />
       <DevicesSection />
-      <PricingSection />
-      <FAQSection />
+      <PricingSection isLeftCornerGradient isCenterGradient />
+      <FAQSection isRightCornerGradient />
     </>
   );
 };

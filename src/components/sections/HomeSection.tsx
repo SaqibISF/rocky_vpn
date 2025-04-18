@@ -7,7 +7,13 @@ import { Avatar, Button } from "@heroui/react";
 import { DownloadIcon } from "@/icons";
 
 const HomeSection: FC = () => (
-  <Section isHeroSection className="flex-col lg:flex-row gap-y-12">
+  <Section
+    isHeroSection
+    isLeftCornerGradient
+    isRightCornerGradient
+    startsRepeat="no-repeat"
+    className="flex-col lg:flex-row gap-y-12"
+  >
     <div className="lg:w-3/5 flex flex-col gap-y-6 px-4 items-center md:items-start text-center md:text-left">
       <span className="text-accent text-xl font-bold">Rocky VPN</span>
       <h1 className="text-5xl md:text-7xl font-bold leading-[3.5rem] md:leading-[5rem]">

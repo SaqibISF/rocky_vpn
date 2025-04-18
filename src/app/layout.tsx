@@ -50,7 +50,7 @@ export default function RootLayout({
           themeProps={{ attribute: "class", defaultTheme: "dark" }}
           className="min-h-screen flex flex-col"
         >
-          <div className="flex-grow">{children}</div>
+          <main className="flex-grow overflow-hidden">{children}</main>
           <Footer />
         </Providers>
       </body>

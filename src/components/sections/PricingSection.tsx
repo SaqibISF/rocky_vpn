@@ -9,7 +9,17 @@ import {
   PriceCardBackground3,
 } from "@/icons";
 
-const PricingSection: FC = () => {
+const PricingSection: FC<{
+  isHeroSection?: boolean;
+  isLeftCornerGradient?: boolean;
+  isRightCornerGradient?: boolean;
+  isCenterGradient?: boolean;
+}> = ({
+  isHeroSection,
+  isLeftCornerGradient,
+  isRightCornerGradient,
+  isCenterGradient,
+}) => {
   const plans = [
     {
       id: 1,
@@ -41,9 +51,13 @@ const PricingSection: FC = () => {
   ];
   return (
     <Section
+      isHeroSection={isHeroSection}
       title="Pricing"
       heading="Choose Your VPN Plan"
       description="Flexible and affordable VPN plans designed to meet your needs. Pay securely with PayPal, Cryptocurrencies or in-app via Google Play and Apple App stores."
+      isLeftCornerGradient={isLeftCornerGradient}
+      isRightCornerGradient={isRightCornerGradient}
+      isCenterGradient={isCenterGradient}
     >
       <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 gap-6">
         {plans.map((plan, index) => (
@@ -76,17 +90,6 @@ const PricingSection: FC = () => {
               </Button>
             </CardFooter>
           </Card>
-          //   <Card key={plan.id}>
-          //     <CardHeader>
-          //       <span className="text-2xl font-semibold">{plan.name}</span>
-          //       <h3 className="text-3xl font-semibold">${plan.price}</h3>
-          //       <h5>
-          //         / {plan.duration > 1 && plan.duration} {plan.duration_unit}
-          //       </h5>
-          //     </CardHeader>
-          //     <CardBody></CardBody>
-          //     <CardFooter></CardFooter>
-          //   </Card>
         ))}
       </div>
     </Section>

@@ -18,17 +18,20 @@ import { ThemeSwitch } from "@/components/theme-switch";
 
 import { AppLogo } from "@/icons";
 import {
-  BUSINESS_VPN_PAGE_PATH,
   DOWNLOADS_PAGE_PATH,
   FEATURES_PAGE_PATH,
   HOME_PAGE_PATH,
   LOGIN_PAGE_PATH,
   PRICING_PAGE_PATH,
   SERVERS_PAGE_PATH,
+  SIGNUP_PAGE_PATH,
   WHAT_IS_A_VPN_PAGE_PATH,
 } from "@/lib/pathnames";
+import { usePathname } from "next/navigation";
 
 const Navbar: FC = () => {
+  const pathname = usePathname();
+
   const navItems = [
     {
       label: "Features",
@@ -46,46 +49,7 @@ const Navbar: FC = () => {
       label: "Pricing",
       href: PRICING_PAGE_PATH,
     },
-    {
-      label: "Business VPN",
-      href: BUSINESS_VPN_PAGE_PATH,
-    },
   ];
-
-  const navMenuItems = [
-    {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
-    },
-  ]
 
   return (
     <HeroUINavbar id="navbar" maxWidth="xl" position="sticky">
@@ -98,7 +62,7 @@ const Navbar: FC = () => {
             <AppLogo className="w-32 h-auto" />
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden md:flex gap-4 justify-start ml-2">
           {navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -116,19 +80,19 @@ const Navbar: FC = () => {
         </ul>
       </NavbarContent>
 
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden md:flex gap-4">
+      <NavbarContent className="flex basis-1/5 sm:basis-full" justify="end">
+        <NavbarItem className="flex lg:gap-4 gap-3">
           <ThemeSwitch />
           <Button
             as={NextLink}
-            href={LOGIN_PAGE_PATH}
+            href={
+              pathname !== LOGIN_PAGE_PATH ? LOGIN_PAGE_PATH : SIGNUP_PAGE_PATH
+            }
             variant="bordered"
-            className="rounded-full"
+            radius="full"
+            className="hidden sm:inline-flex"
           >
-            Login
+            {pathname !== LOGIN_PAGE_PATH ? "Login" : "Sign Up"}
           </Button>
           <Button
             as={NextLink}
@@ -136,33 +100,66 @@ const Navbar: FC = () => {
             color="primary"
             variant="shadow"
             radius="full"
+            className="hidden sm:inline-flex"
           >
             Download
           </Button>
         </NavbarItem>
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <NavbarMenuToggle />
+        <NavbarMenuToggle className="md:hidden" />
       </NavbarContent>
 
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {navMenuItems.map((item, index) => (
+          {[
+            {
+              label: "Home",
+              href: HOME_PAGE_PATH,
+            },
+            ...navItems,
+            {
+              label: "Login",
+              href: LOGIN_PAGE_PATH,
+            },
+            {
+              label: "Download",
+              href: DOWNLOADS_PAGE_PATH,
+            },
+          ].map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === navMenuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
+              {item.href === LOGIN_PAGE_PATH ? (
+                <Button
+                  as={NextLink}
+                  href={
+                    pathname !== LOGIN_PAGE_PATH
+                      ? LOGIN_PAGE_PATH
+                      : SIGNUP_PAGE_PATH
+                  }
+                  variant="bordered"
+                  radius="full"
+                  className="w-full sm:hidden"
+                >
+                  {pathname !== LOGIN_PAGE_PATH ? "Login" : "Sign Up"}
+                </Button>
+              ) : item.href === DOWNLOADS_PAGE_PATH ? (
+                <Button
+                  as={NextLink}
+                  href={DOWNLOADS_PAGE_PATH}
+                  color="primary"
+                  variant="shadow"
+                  radius="full"
+                  className="w-full sm:hidden"
+                >
+                  Download
+                </Button>
+              ) : (
+                <Link
+                  color={pathname === item.href ? "primary" : "foreground"}
+                  href="#"
+                  size="lg"
+                >
+                  {item.label}
+                </Link>
+              )}
             </NavbarMenuItem>
           ))}
         </div>

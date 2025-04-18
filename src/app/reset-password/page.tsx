@@ -38,7 +38,14 @@ const ResetPasswordPage: FC = () => {
 
   return (
     <Section isHeroSection>
-      <form onSubmit={handleSubmit(login)} className="max-w-md w-full">
+      <form onSubmit={handleSubmit(login)} className="max-w-md w-full relative">
+        <div
+          className="w-full h-full rounded-xl absolute blur-[5.375rem] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
+          }}
+        ></div>
         <Card className="p-6">
           <CardHeader className="flex-col gap-2">
             <h2 className="text-3xl font-semibold">Reset Password!</h2>

@@ -9,6 +9,7 @@ const FeaturesSection: FC = () => (
     title="Features"
     heading="Why Use Rocky"
     description="we offering a range of cutting-edge features that set us apart in the world of online security and privacy."
+    isCenterGradient
   >
     <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {[

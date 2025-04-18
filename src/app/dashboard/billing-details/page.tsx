@@ -104,7 +104,7 @@ const BillingDetailsPage: FC = () => {
           </Card>
         </form>
 
-        <Card className="p-6 w-full max-w-md">
+        <Card className="p-6 w-full max-w-md bg-opacity-35">
           <CardHeader className="flex flex-col items-start gap-3">
             <h3 className="text-lg font-bold">Free Trial</h3>
             <p className="text-xs font-medium">
