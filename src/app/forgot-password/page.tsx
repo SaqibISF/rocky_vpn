@@ -1,34 +1,78 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Section } from "@/components/sections";
 import { EnvelopeIcon } from "@/icons";
 import { LOGIN_PAGE_PATH } from "@/lib/pathnames";
 import {
+  addToast,
   Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Input,
 } from "@heroui/react";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
+import axios, { AxiosError } from "axios";
+import { FORGOT_PASSWORD_ROUTE } from "@/lib/constants";
+import { EMAIL_INVALID_ERROR_MESSAGE, EMAIL_REGEX } from "@/lib/utils";
+import Input from "@/components/Input";
 
 const ForgotPasswordPage: FC = () => {
   type Data = { email: string };
+
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string>("");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // setError,
+    setError,
     clearErrors,
-  } = useForm<Data>();
+  } = useForm<Data>({
+    defaultValues: {
+      email: "",
+    },
+  });
 
   const submit: SubmitHandler<Data> = async (data) => {
-    clearErrors();
-    console.log(data);
+    try {
+      clearErrors();
+      setSuccessMessage("");
+      setLoading(true);
+      const res = await axios
+        .post<{ status: boolean; message: string }>(
+          FORGOT_PASSWORD_ROUTE,
+          { email: data.email },
+          {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => res.data);
+
+      if (res.status) {
+        addToast({ color: "success", description: res.message });
+        setSuccessMessage(res.message);
+      } else {
+        addToast({ color: "danger", description: res.message });
+        setError("root", { type: "manual", message: res.message });
+      }
+    } catch (error) {
+      const errorMessage =
+        error instanceof AxiosError
+          ? error.response
+            ? error.response.data.message
+            : error.message
+          : "Something Went Wrong";
+      setError("root", { type: "manual", message: errorMessage });
+      addToast({ color: "danger", description: errorMessage });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -51,38 +95,47 @@ const ForgotPasswordPage: FC = () => {
               Please enter your email we will send you password reset link to
               your email.
             </p>
+            {successMessage && (
+              <div className="w-full text-success-600 bg-success-50 border-2 border-solid border-success-100 p-3 rounded-xl">
+                {successMessage}
+              </div>
+            )}
+
+            {errors.root && (
+              <div className="w-full text-danger-600 bg-danger-50 border-2 border-solid border-danger-100 p-3 rounded-xl">
+                {errors.root.message}
+              </div>
+            )}
           </CardHeader>
           <CardBody className="gap-6">
             <Input
               label="Email"
-              labelPlacement="outside"
               placeholder="you@example.com"
               type="email"
+              disabled={successMessage ? true : false}
               endContent={
                 <EnvelopeIcon className="w-5 text-default-500 pointer-events-none" />
               }
-              size="lg"
-              classNames={{
-                inputWrapper: "bg-transparent border",
-              }}
               errorMessage={errors.email?.message}
               {...register("email", {
-                required: "Enter email address",
-                minLength: {
-                  value: 2,
-                  message: "Enter email address",
-                },
+                required: { value: true, message: "Enter email address" },
                 pattern: {
-                  value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
-                  message:
-                    "Please enter valid email address\n e.g. username@domain.com",
+                  value: EMAIL_REGEX,
+                  message: EMAIL_INVALID_ERROR_MESSAGE,
                 },
               })}
             />
           </CardBody>
           <CardFooter className="flex-col gap-4">
-            <Button type="submit" fullWidth size="lg" color="primary">
-              Submit
+            <Button
+              isLoading={isLoading}
+              type="submit"
+              fullWidth
+              size="lg"
+              color="primary"
+              disabled={successMessage ? true : false}
+            >
+              {isLoading ? "Loading..." : "Send Reset Link"}
             </Button>
             <Link
               href={LOGIN_PAGE_PATH}

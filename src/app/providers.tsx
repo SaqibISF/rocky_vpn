@@ -4,6 +4,7 @@ import React, { FC, ReactNode, useEffect } from "react";
 import { HeroUIProvider, ToastProvider } from "@heroui/react";
 import { ThemeProvider, type ThemeProviderProps } from "next-themes";
 import { useRouter } from "next/navigation";
+import { CookiesProvider } from "react-cookie";
 
 declare module "@react-types/shared" {
   interface RouterConfig {
@@ -46,11 +47,13 @@ export const Providers: FC<{
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
   return (
     <HeroUIProvider navigate={router.push} className={className}>
-      <ThemeProvider {...themeProps}>{children}</ThemeProvider>
-      <ToastProvider />
+      <CookiesProvider>
+        <ThemeProvider {...themeProps}>{children}</ThemeProvider>
+        <ToastProvider />
+      </CookiesProvider>
     </HeroUIProvider>
   );
 };

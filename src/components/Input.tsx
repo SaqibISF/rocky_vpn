@@ -9,6 +9,7 @@ const Input: FC<InputProps> = ({
   type,
   endContent,
   size = "lg",
+  errorMessage,
   ...props
 }) => {
   const [isPasswordShow, setIsPasswordShow] = useState(false);
@@ -21,8 +22,11 @@ const Input: FC<InputProps> = ({
       labelPlacement={labelPlacement}
       type={type === "password" ? (isPasswordShow ? "text" : "password") : type}
       size={size}
+      isInvalid={errorMessage ? true : false}
+      errorMessage={errorMessage}
       classNames={{
         inputWrapper: "bg-transparent border",
+        errorMessage: "mt-2 whitespace-pre-line",
       }}
       endContent={
         type === "password" ? (
@@ -41,7 +45,6 @@ const Input: FC<InputProps> = ({
           endContent
         )
       }
-    //   errorMessage="sdf"
       {...props}
     />
   );

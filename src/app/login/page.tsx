@@ -1,10 +1,15 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Section } from "@/components/sections";
 import { EnvelopeIcon } from "@/icons";
-import { FORGOT_PASSWORD_PAGE_PATH, SIGNUP_PAGE_PATH } from "@/lib/pathnames";
 import {
+  DASHBOARD_PAGE_PATH,
+  FORGOT_PASSWORD_PAGE_PATH,
+  SIGNUP_PAGE_PATH,
+} from "@/lib/pathnames";
+import {
+  addToast,
   Button,
   Card,
   CardBody,
@@ -15,21 +20,90 @@ import {
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/components/Input";
+import { EMAIL_INVALID_ERROR_MESSAGE, EMAIL_REGEX } from "@/lib/utils";
+import axios, { AxiosError } from "axios";
+import { LOGIN_ROUTE } from "@/lib/constants";
+import { User } from "@/types/user";
+import { useUserCookie } from "@/hooks/use-cookies";
+import { useRouter } from "next/navigation";
 
 const LoginPage: FC = () => {
+  const router = useRouter();
   type LoginData = { email: string; password: string };
+
+  const { setUserCookie } = useUserCookie();
+
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // setError,
+    setError,
+    // setValue,
     clearErrors,
+    reset,
+    setFocus,
   } = useForm<LoginData>();
 
   const login: SubmitHandler<LoginData> = async (data) => {
-    clearErrors();
-    console.log(data);
+    try {
+      clearErrors();
+      setLoading(true);
+
+      type LoginResponse = {
+        status: boolean;
+        message: string;
+        access_token: string;
+        user: User;
+      };
+
+      const res = await axios
+        .post<LoginResponse>(
+          LOGIN_ROUTE,
+          {
+            name: data.email,
+            password: data.password,
+          },
+          {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => res.data);
+
+      if (res.status) {
+        addToast({
+          color: "success",
+          description: res.message,
+        });
+        reset();
+        setUserCookie({
+          name: res.user.name,
+          email: res.user.email,
+          access_token: res.access_token,
+        });
+        router.push(DASHBOARD_PAGE_PATH);
+      } else {
+        addToast({ color: "danger", description: res.message });
+        setError("root", { type: "manual", message: res.message });
+        // setValue("password", "");
+      }
+    } catch (error) {
+      const errorMessage =
+        error instanceof AxiosError
+          ? error.response
+            ? error.response.data.message
+            : error.message
+          : "Something Went Wrong";
+      setError("root", { type: "manual", message: errorMessage });
+      // setValue("password", "");
+      setFocus("password");
+      addToast({ color: "danger", description: errorMessage });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,6 +122,12 @@ const LoginPage: FC = () => {
             <p className="text-default-500 text-sm font-normal">
               Sign in with your email
             </p>
+
+            {errors.root && (
+              <div className="w-full text-danger-600 bg-danger-50 border-2 border-solid border-danger-100 p-3 rounded-xl">
+                {errors.root.message}
+              </div>
+            )}
           </CardHeader>
           <CardBody className="gap-6">
             <Input
@@ -59,15 +139,10 @@ const LoginPage: FC = () => {
               }
               errorMessage={errors.email?.message}
               {...register("email", {
-                required: "Enter email address",
-                minLength: {
-                  value: 2,
-                  message: "Enter email address",
-                },
+                required: { value: true, message: "Enter email address" },
                 pattern: {
-                  value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
-                  message:
-                    "Please enter valid email address\n e.g. username@domain.com",
+                  value: EMAIL_REGEX,
+                  message: EMAIL_INVALID_ERROR_MESSAGE,
                 },
               })}
             />
@@ -78,12 +153,7 @@ const LoginPage: FC = () => {
               type="password"
               errorMessage={errors.password?.message}
               {...register("password", {
-                required: "Enter your password",
-                // minLength: {
-                //   value: 8,
-                //   message:
-                //     "Password must be at least 8 characters long",
-                // },
+                required: { value: true, message: "Enter your password" },
               })}
             />
 
@@ -103,8 +173,14 @@ const LoginPage: FC = () => {
             </div>
           </CardBody>
           <CardFooter className="flex-col gap-4">
-            <Button type="submit" fullWidth size="lg" color="primary">
-              Login
+            <Button
+              isLoading={isLoading}
+              type="submit"
+              fullWidth
+              size="lg"
+              color="primary"
+            >
+              {isLoading ? "Logging in..." : "Login"}
             </Button>
             <span className="text-sm font-normal">
               Don&apos;t have an account?{" "}
