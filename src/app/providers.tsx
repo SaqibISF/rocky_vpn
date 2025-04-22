@@ -5,6 +5,8 @@ import { HeroUIProvider, ToastProvider } from "@heroui/react";
 import { ThemeProvider, type ThemeProviderProps } from "next-themes";
 import { useRouter } from "next/navigation";
 import { CookiesProvider } from "react-cookie";
+import { Provider } from "react-redux";
+import store from "@/store/store";
 
 declare module "@react-types/shared" {
   interface RouterConfig {
@@ -51,7 +53,9 @@ export const Providers: FC<{
   return (
     <HeroUIProvider navigate={router.push} className={className}>
       <CookiesProvider>
-        <ThemeProvider {...themeProps}>{children}</ThemeProvider>
+        <ThemeProvider {...themeProps}>
+          <Provider store={store}>{children}</Provider>
+        </ThemeProvider>
         <ToastProvider />
       </CookiesProvider>
     </HeroUIProvider>

@@ -10,6 +10,7 @@ import AdvantagesSection from "./AdvantagesSection";
 import VPNBlogSection from "./VPNBlogSection";
 import AvailableDevicesSection from "./AvailableDevicesSection";
 import AllServersSection from "./AllServersSection";
+import ArticleSection from "./ArticleSection";
 
 export {
   HomeSection,
@@ -24,4 +25,5 @@ export {
   VPNBlogSection,
   AvailableDevicesSection,
   AllServersSection,
+  ArticleSection,
 };

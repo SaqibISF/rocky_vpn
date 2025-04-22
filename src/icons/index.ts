@@ -38,6 +38,11 @@ import VPNIcon from "./VPNIcon";
 import HeadphoneIcon from "./HeadphoneIcon";
 import ShiningStar from "./ShiningStar";
 import WorldMap from "./WorldMap";
+import MoneyCheckDollarIcon from "./MoneyCheckDollarIcon";
+import CircleExclamation from "./CircleExclamation";
+import ThumbsUpIcon from "./ThumbsUpIcon";
+import VerifiedIcon from "./VerifiedIcon";
+import ErrorIcon from "./ErrorIcon";
 
 export {
   AppLogo,
@@ -80,4 +85,9 @@ export {
   HeadphoneIcon,
   ShiningStar,
   WorldMap,
+  MoneyCheckDollarIcon,
+  CircleExclamation,
+  ThumbsUpIcon,
+  VerifiedIcon,
+  ErrorIcon,
 };

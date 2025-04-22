@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import { cn } from "@/lib/utils";
 import { Fira_Code, Inter } from "next/font/google";
 import Footer from "@/components/Footer";
+import MainLayout from "@/components/MainLayout";
 
 export const fontSans = Inter({
   subsets: ["latin"],
@@ -44,13 +45,18 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <head />
       <body
-        className={cn("bg-[#FFFFFF] dark:bg-[#0F0F0F] text-foreground font-sans antialiased", fontSans.variable)}
+        className={cn(
+          "bg-[#FFFFFF] dark:bg-[#0F0F0F] text-foreground font-sans antialiased",
+          fontSans.variable
+        )}
       >
         <Providers
           themeProps={{ attribute: "class", defaultTheme: "dark" }}
           className="min-h-screen flex flex-col"
         >
-          <main className="flex-grow overflow-hidden">{children}</main>
+          <MainLayout className="flex-grow overflow-hidden">
+            {children}
+          </MainLayout>
           <Footer />
         </Providers>
       </body>

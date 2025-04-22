@@ -23,71 +23,76 @@ import {
   SUBSCRIPTION_PAGE_PATH,
 } from "@/lib/pathnames";
 import Link from "next/link";
+import { useLogout } from "@/hooks/useLogout";
 
-const SideBar: FC<{ className?: string }> = ({ className }) => (
-  <aside className={cn("w-52 py-8", className)}>
-    <ul>
-      <li>
-        <Button
-          as={Link}
-          href={DASHBOARD_PAGE_PATH}
-          variant="light"
-          radius="none"
-          className="py-9 px-6 w-full justify-stretch"
-        >
-          <DashboardIcon />
-          <span className="text-sm font-medium">Dashboard</span>
-        </Button>
-        <Divider />
-      </li>
-
-      {[
-        {
-          href: SUBSCRIPTION_PAGE_PATH,
-          name: "Subscription",
-          Icon: SubscriptionIcon,
-        },
-        {
-          href: BILLING_DETAILS_PAGE_PATH,
-          name: "Account & Billing",
-          Icon: SettingsIcon,
-        },
-      ].map(({ href, name, Icon }) => (
-        <li key={href}>
+const SideBar: FC<{ className?: string }> = ({ className }) => {
+  const { handleLogout } = useLogout();
+  return (
+    <aside className={cn("w-52 py-8", className)}>
+      <ul>
+        <li>
           <Button
             as={Link}
-            href={href}
+            href={DASHBOARD_PAGE_PATH}
             variant="light"
             radius="none"
             className="py-9 px-6 w-full justify-stretch"
           >
-            <Icon />
-            <span className="text-sm font-medium">{name}</span>
+            <DashboardIcon />
+            <span className="text-sm font-medium">Dashboard</span>
+          </Button>
+          <Divider />
+        </li>
+
+        {[
+          {
+            href: SUBSCRIPTION_PAGE_PATH,
+            name: "Subscription",
+            Icon: SubscriptionIcon,
+          },
+          {
+            href: BILLING_DETAILS_PAGE_PATH,
+            name: "Account & Billing",
+            Icon: SettingsIcon,
+          },
+        ].map(({ href, name, Icon }) => (
+          <li key={href}>
+            <Button
+              as={Link}
+              href={href}
+              variant="light"
+              radius="none"
+              className="py-9 px-6 w-full justify-stretch"
+            >
+              <Icon />
+              <span className="text-sm font-medium">{name}</span>
+            </Button>
+          </li>
+        ))}
+
+        <li>
+          <Divider />
+          <Button
+            variant="light"
+            radius="none"
+            className="py-9 px-6 w-full justify-stretch"
+            onPress={handleLogout}
+          >
+            <SignOutIcon />
+            <span className="text-sm font-medium">Sign Out</span>
           </Button>
         </li>
-      ))}
-
-      <li>
-        <Divider />
-        <Button
-          variant="light"
-          radius="none"
-          className="py-9 px-6 w-full justify-stretch"
-        >
-          <SignOutIcon />
-          <span className="text-sm font-medium">Sign Out</span>
-        </Button>
-      </li>
-    </ul>
-    <div
-      className="w-[21.875rem] h-[27.125rem] rounded-xl absolute blur-[5.375rem] -left-[10.625rem] -bottom-[12.5rem] pointer-events-none"
-      style={{
-        background:
-          "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
-      }}
-    ></div>
-  </aside>
-);
+      </ul>
+      <div
+        className="w-[21.875rem] h-[27.125rem] rounded-xl absolute blur-[5.375rem] -left-[10.625rem] -bottom-[12.5rem] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
+        }}
+      ></div>
+    </aside>
+  );
+};
 
 const DashboardSection: FC<{
   title: string;

@@ -9,9 +9,8 @@ import {
   NavbarMenuItem,
 } from "@heroui/navbar";
 import { Button } from "@heroui/button";
-import { Link } from "@heroui/link";
 import { link as linkStyles } from "@heroui/theme";
-import NextLink from "next/link";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 import { ThemeSwitch } from "@/components/theme-switch";
@@ -24,10 +23,10 @@ import {
   LOGIN_PAGE_PATH,
   PRICING_PAGE_PATH,
   SERVERS_PAGE_PATH,
-  SIGNUP_PAGE_PATH,
   WHAT_IS_A_VPN_PAGE_PATH,
 } from "@/lib/pathnames";
 import { usePathname } from "next/navigation";
+import AuthButton from "./AuthButton";
 
 const Navbar: FC = () => {
   const pathname = usePathname();
@@ -55,17 +54,17 @@ const Navbar: FC = () => {
     <HeroUINavbar id="navbar" maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink
+          <Link
             href={HOME_PAGE_PATH}
             className="flex justify-start items-center gap-1"
           >
             <AppLogo className="w-32 h-auto" />
-          </NextLink>
+          </Link>
         </NavbarBrand>
-        <ul className="hidden md:flex gap-4 justify-start ml-2">
+        <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {navItems.map((item) => (
             <NavbarItem key={item.href}>
-              <NextLink
+              <Link
                 className={cn(
                   linkStyles({ color: "foreground" }),
                   "data-[active=true]:text-primary data-[active=true]:font-medium"
@@ -74,7 +73,7 @@ const Navbar: FC = () => {
                 href={item.href}
               >
                 {item.label}
-              </NextLink>
+              </Link>
             </NavbarItem>
           ))}
         </ul>
@@ -83,19 +82,16 @@ const Navbar: FC = () => {
       <NavbarContent className="flex basis-1/5 sm:basis-full" justify="end">
         <NavbarItem className="flex lg:gap-4 gap-3">
           <ThemeSwitch />
+
+          <AuthButton
+            classNames={{
+              dropdownButton: "hidden sm:inline-flex",
+              authButton: "hidden sm:inline-flex",
+            }}
+          />
+
           <Button
-            as={NextLink}
-            href={
-              pathname !== LOGIN_PAGE_PATH ? LOGIN_PAGE_PATH : SIGNUP_PAGE_PATH
-            }
-            variant="bordered"
-            radius="full"
-            className="hidden sm:inline-flex"
-          >
-            {pathname !== LOGIN_PAGE_PATH ? "Login" : "Sign Up"}
-          </Button>
-          <Button
-            as={NextLink}
+            as={Link}
             href={DOWNLOADS_PAGE_PATH}
             color="primary"
             variant="shadow"
@@ -105,7 +101,7 @@ const Navbar: FC = () => {
             Download
           </Button>
         </NavbarItem>
-        <NavbarMenuToggle className="md:hidden" />
+        <NavbarMenuToggle className="lg:hidden" />
       </NavbarContent>
 
       <NavbarMenu>
@@ -127,22 +123,15 @@ const Navbar: FC = () => {
           ].map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               {item.href === LOGIN_PAGE_PATH ? (
-                <Button
-                  as={NextLink}
-                  href={
-                    pathname !== LOGIN_PAGE_PATH
-                      ? LOGIN_PAGE_PATH
-                      : SIGNUP_PAGE_PATH
-                  }
-                  variant="bordered"
-                  radius="full"
-                  className="w-full sm:hidden"
-                >
-                  {pathname !== LOGIN_PAGE_PATH ? "Login" : "Sign Up"}
-                </Button>
+                <AuthButton
+                  classNames={{
+                    dropdownButton: "w-full sm:hidden",
+                    authButton: "w-full sm:hidden",
+                  }}
+                />
               ) : item.href === DOWNLOADS_PAGE_PATH ? (
                 <Button
-                  as={NextLink}
+                  as={Link}
                   href={DOWNLOADS_PAGE_PATH}
                   color="primary"
                   variant="shadow"
@@ -153,9 +142,10 @@ const Navbar: FC = () => {
                 </Button>
               ) : (
                 <Link
-                  color={pathname === item.href ? "primary" : "foreground"}
-                  href="#"
-                  size="lg"
+                  className={
+                    pathname === item.href ? "text-primary" : "text-foreground"
+                  }
+                  href={item.href}
                 >
                   {item.label}
                 </Link>

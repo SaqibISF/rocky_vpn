@@ -4,13 +4,31 @@ import { DashboardSection } from "./layout";
 import { Button } from "@heroui/react";
 import { AvailableDevicesSection } from "@/components/sections";
 import { HeadphoneIcon } from "@/icons";
+import Link from "next/link";
+import { DOWNLOADS_PAGE_PATH } from "@/lib/pathnames";
+import { useAppState } from "@/hooks/use-app-state";
+import { useActivePlanCookie, useUserCookie } from "@/hooks/use-cookies";
+import { getFormattedDate } from "@/lib/utils";
 
 const DashboardPage: FC = () => {
+  const { isAppMounted } = useAppState();
+  const { user } = useUserCookie();
+  const { activePlan } = useActivePlanCookie();
   return (
-    <DashboardSection title="Dashboard" heading="Welcome back, Farhan">
+    <DashboardSection
+      title="Dashboard"
+      heading={`Welcome back, ${isAppMounted && user ? user.name : ""}`}
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="flex flex-col items-center justify-center gap-4 p-6 border-2 border-default-500 rounded-xl">
-          <Button variant="shadow" color="primary" size="lg" radius="full">
+          <Button
+            as={Link}
+            href={DOWNLOADS_PAGE_PATH}
+            variant="shadow"
+            color="primary"
+            size="lg"
+            radius="full"
+          >
             Connect
           </Button>
           <p className="text-default-500 text-2xl font-normal">
@@ -20,14 +38,29 @@ const DashboardPage: FC = () => {
 
         <div className="flex flex-col justify-center gap-4 p-6 border-2 border-default-500 rounded-xl">
           <h3 className="text-2xl font-medium">Subscription</h3>
-          <div className="flex items-center justify-between text-xl text-default-500 font-normal">
-            <p>Plan: Premium</p>
-            <p className="text-base">Per month</p>
-          </div>
-          <div className="flex items-center justify-between gap-4 text-xl text-default-500 font-normal">
-            <p>Renewal Date: April 12, 2025</p>
-            <p className="text-base">$12.99/month</p>
-          </div>
+          {isAppMounted &&
+            (activePlan ? (
+              <>
+                <div className="flex items-center justify-between text-xl text-default-500 font-normal">
+                  <p>Plan: {activePlan.name}</p>
+                  <p className="text-base">
+                    {activePlan.duration} {activePlan.duration_unit}
+                  </p>
+                </div>
+                <div className="flex items-center justify-between gap-4 text-xl text-default-500 font-normal">
+                  <p>Renewal Date: {getFormattedDate(activePlan.end_date)}</p>
+                  <p className="text-base">
+                    ${activePlan.amount_paid}/
+                    {activePlan.duration > 1 ? activePlan.duration + " " : ""}
+                    {activePlan.duration_unit}
+                  </p>
+                </div>
+              </>
+            ) : (
+              <p className="text-default-500 text-base font-normal">
+                No, Active Plan Found.
+              </p>
+            ))}
         </div>
 
         <div className="flex flex-col justify-center gap-4 p-6 border-2 border-default-500 rounded-xl">
@@ -38,7 +71,9 @@ const DashboardPage: FC = () => {
         </div>
 
         <div className="flex flex-col justify-center gap-4 p-6 border-2 border-default-500 rounded-xl">
-          <h3 className="flex items-center gap-2 text-2xl font-medium"><HeadphoneIcon size={44} /> Customer Contact Support</h3>
+          <h3 className="flex items-center gap-2 text-2xl font-medium">
+            <HeadphoneIcon size={44} /> Customer Contact Support
+          </h3>
           <p className="text-default-500 text-xl font-normal">
             We&apos;re here to help you 24/7—get in touch anytime!
           </p>

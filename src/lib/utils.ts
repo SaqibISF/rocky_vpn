@@ -5,8 +5,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const getFormattedDate = (date: string) =>
+  new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(new Date(date));
+
 export const NAME_REGEX = /^[A-Za-z ]+$/;
-export const NAME_INVALID_ERROR_MESSAGE = "Name must only contain letters and spaces";
+export const NAME_INVALID_ERROR_MESSAGE =
+  "Name must only contain letters and spaces";
 
 export const EMAIL_REGEX = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
 export const EMAIL_INVALID_ERROR_MESSAGE =

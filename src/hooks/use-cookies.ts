@@ -1,4 +1,5 @@
-import { USER_COOKIE_KEY } from "@/lib/constants";
+import { ACTIVE_PLAN_COOKIE_KEY, USER_COOKIE_KEY } from "@/lib/constants";
+import { ActivePlan } from "@/types";
 import { User } from "@/types/user";
 import { useCookies } from "react-cookie";
 
@@ -21,4 +22,28 @@ export const useUserCookie = () => {
   };
 
   return { user, setUserCookie, removeUserCookie } as const;
+};
+
+export const useActivePlanCookie = () => {
+  const [activePlanCookie, setCookie, removeCookie] = useCookies([
+    ACTIVE_PLAN_COOKIE_KEY,
+  ]);
+
+  const activePlan: ActivePlan =
+    activePlanCookie.rocky_user_active_plan ?? null;
+
+  const setActivePlanCookie = (activePlan: ActivePlan) => {
+    setCookie(ACTIVE_PLAN_COOKIE_KEY, JSON.stringify(activePlan), {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 1, // 1 day
+      secure: true,
+      sameSite: "strict",
+    });
+  };
+
+  const removeActivePlanCookie = () => {
+    removeCookie(ACTIVE_PLAN_COOKIE_KEY, { path: "/" });
+  };
+
+  return { activePlan, setActivePlanCookie, removeActivePlanCookie } as const;
 };

@@ -7,6 +7,7 @@ import {
   DASHBOARD_PAGE_PATH,
   FORGOT_PASSWORD_PAGE_PATH,
   SIGNUP_PAGE_PATH,
+  RESENT_EMAIL_VERIFICATION_PAGE_PATH,
 } from "@/lib/pathnames";
 import {
   addToast,
@@ -182,6 +183,12 @@ const LoginPage: FC = () => {
             >
               {isLoading ? "Logging in..." : "Login"}
             </Button>
+            <Link
+              href={RESENT_EMAIL_VERIFICATION_PAGE_PATH}
+              className="text-primary dark:text-primary-600 text-sm sm:text-medium font-medium"
+            >
+              Resend Email Verification
+            </Link>
             <span className="text-sm font-normal">
               Don&apos;t have an account?{" "}
               <Link

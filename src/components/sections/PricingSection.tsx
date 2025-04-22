@@ -1,13 +1,21 @@
 "use client";
 import React, { FC } from "react";
 import Section from "./Section";
-import { Button, Card, CardBody, CardFooter, CardHeader } from "@heroui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Skeleton,
+} from "@heroui/react";
 import {
   CheckedIcon,
   PriceCardBackground1,
   PriceCardBackground2,
   PriceCardBackground3,
 } from "@/icons";
+import { usePlans } from "@/hooks/usePlans";
 
 const PricingSection: FC<{
   isHeroSection?: boolean;
@@ -20,35 +28,8 @@ const PricingSection: FC<{
   isRightCornerGradient,
   isCenterGradient,
 }) => {
-  const plans = [
-    {
-      id: 1,
-      name: "Silver",
-      price: 4.99,
-      duration: 1,
-      duration_unit: "week",
-      description:
-        "Unlimited Devices, Faster Connection, Unlimited Worldwide Location, Unlimited High Speed VPN, No Ads Forever, 24/7 Customer Service",
-    },
-    {
-      id: 2,
-      name: "Gold",
-      price: 12.99,
-      duration: 1,
-      duration_unit: "month",
-      description:
-        "Unlimited Devices, Faster Connection, Unlimited Worldwide Location, Unlimited High Speed VPN, No Ads Forever, 24/7 Customer Service",
-    },
-    {
-      id: 3,
-      name: "Diamond",
-      price: 39.99,
-      duration: 1,
-      duration_unit: "year",
-      description:
-        "Unlimited Devices, Faster Connection, Unlimited Worldwide Location, Unlimited High Speed VPN, No Ads Forever, 24/7 Customer Service",
-    },
-  ];
+  const { isPlansLoading, plans } = usePlans();
+
   return (
     <Section
       isHeroSection={isHeroSection}
@@ -59,7 +40,44 @@ const PricingSection: FC<{
       isRightCornerGradient={isRightCornerGradient}
       isCenterGradient={isCenterGradient}
     >
+      {!isPlansLoading && plans.length === 0 && (
+        <Card className="">
+          <CardBody>
+            <p className="text-lg font-medium text-default-500">
+              No plans available at the moment. Please check back later.
+            </p>
+          </CardBody>
+        </Card>
+      )}
+
       <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+        {isPlansLoading &&
+          Array.from({ length: 3 }).map((_, index) => (
+            <Card
+              className="p-8 w-full max-w-96 mx-auto relative animate-pulse"
+              key={index}
+            >
+              <CardHeader className="p-0 flex-col items-start gap-2">
+                <Skeleton className="h-6 w-32 bg-gray-300 rounded-md"></Skeleton>
+                <div className="flex items-center mt-2 gap-2">
+                  <Skeleton className="h-8 w-16 bg-gray-300 rounded-md"></Skeleton>
+                  <Skeleton className="h-4 w-12 bg-gray-300 rounded-md"></Skeleton>
+                </div>
+              </CardHeader>
+              <CardBody className="px-0 py-10 flex flex-col items-start gap-6">
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <div key={i} className="flex gap-2 items-center">
+                    <Skeleton className="h-4 w-4 bg-gray-300 rounded-full"></Skeleton>
+                    <Skeleton className="h-4 w-48 bg-gray-300 rounded-md"></Skeleton>
+                  </div>
+                ))}
+              </CardBody>
+              <CardFooter className="p-0">
+                <Skeleton className="h-10 w-full bg-gray-300 rounded-md"></Skeleton>
+              </CardFooter>
+            </Card>
+          ))}
+
         {plans.map((plan, index) => (
           <Card className="p-8 w-full max-w-96 mx-auto relative" key={plan.id}>
             {(index + 1) % 3 === 1 && <PriceCardBackground1 />}
