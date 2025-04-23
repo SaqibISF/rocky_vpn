@@ -2,10 +2,14 @@ import { useCallback, useEffect, useState } from "react";
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import axios, { AxiosError } from "axios";
-import { GET_PLANS_ROUTE } from "@/lib/constants";
-import { Plan } from "@/types";
-import { setPlans } from "@/store/plans.slice";
+import {
+  GET_PLANS_ROUTE,
+  GET_PURCHASE_ACTIVE_PLAN_ROUTE,
+} from "@/lib/constants";
+import { Plan, PurchasedPlan } from "@/types";
+import { setActivePlan, setPlans } from "@/store/plans.slice";
 import { addToast } from "@heroui/react";
+import { useUserCookie } from "./use-cookies";
 
 export const usePlansState = () =>
   useSelector((state: RootState) => state.plans);
@@ -46,4 +50,51 @@ export const usePlans = () => {
   }, [fetchPlans]);
 
   return { isPlansLoading, plans } as const;
+};
+
+export const useActivePlan = () => {
+  const dispatch = useDispatch();
+  const { user } = useUserCookie();
+  const { activePlan, isActivePlanLoadedOnce } = useSelector(
+    (state: RootState) => state.plans
+  );
+
+  const [isActivePlanLoading, setLoading] = useState<boolean>(true);
+
+  const fetchPlans = useCallback(async () => {
+    try {
+      if (isActivePlanLoadedOnce) return;
+      const response = await axios
+        .get<{ status: boolean; plan: PurchasedPlan }>(
+          GET_PURCHASE_ACTIVE_PLAN_ROUTE,
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${user.access_token}`,
+            },
+          }
+        )
+        .then((res) => res.data);
+      if (response.status) {
+        dispatch(setActivePlan(response.plan));
+      }
+    } catch (error) {
+      const errorMessage =
+        error instanceof AxiosError
+          ? error.response
+            ? error.response.data.message
+            : error.message
+          : "Failed to Load Active Plan";
+      addToast({ color: "danger", description: errorMessage });
+    } finally {
+      setLoading(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetchPlans();
+  }, [fetchPlans]);
+
+  return { isActivePlanLoading, activePlan } as const;
 };

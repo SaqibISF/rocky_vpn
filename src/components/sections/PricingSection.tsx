@@ -16,6 +16,8 @@ import {
   PriceCardBackground3,
 } from "@/icons";
 import { usePlans } from "@/hooks/usePlans";
+import Link from "next/link";
+import { CHECKOUT_PAGE_PATH } from "@/lib/pathnames";
 
 const PricingSection: FC<{
   isHeroSection?: boolean;
@@ -29,7 +31,6 @@ const PricingSection: FC<{
   isCenterGradient,
 }) => {
   const { isPlansLoading, plans } = usePlans();
-
   return (
     <Section
       isHeroSection={isHeroSection}
@@ -103,7 +104,13 @@ const PricingSection: FC<{
               ))}
             </CardBody>
             <CardFooter className="p-0">
-              <Button variant="bordered" radius="full" className="w-full">
+              <Button
+                as={Link}
+                href={CHECKOUT_PAGE_PATH(plan.id)}
+                variant="bordered"
+                radius="full"
+                className="w-full"
+              >
                 Get Started
               </Button>
             </CardFooter>

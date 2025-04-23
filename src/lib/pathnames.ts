@@ -34,3 +34,7 @@ export const BILLING_DETAILS_PAGE_PATH =
   DASHBOARD_PAGE_PATH + "/billing-details";
 
 export const SUBSCRIPTION_PAGE_PATH = DASHBOARD_PAGE_PATH + "/subscription";
+
+export const PAYMENT_PROCESSING_PAGE_PATH = "/payment-processing";
+
+export const CHECKOUT_PAGE_PATH = (planId: number) => `/checkout?planId=${planId}`;

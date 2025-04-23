@@ -7,13 +7,14 @@ import { HeadphoneIcon } from "@/icons";
 import Link from "next/link";
 import { DOWNLOADS_PAGE_PATH } from "@/lib/pathnames";
 import { useAppState } from "@/hooks/use-app-state";
-import { useActivePlanCookie, useUserCookie } from "@/hooks/use-cookies";
+import { useUserCookie } from "@/hooks/use-cookies";
 import { getFormattedDate } from "@/lib/utils";
+import { useActivePlan } from "@/hooks/usePlans";
 
 const DashboardPage: FC = () => {
   const { isAppMounted } = useAppState();
   const { user } = useUserCookie();
-  const { activePlan } = useActivePlanCookie();
+  const { activePlan } = useActivePlan();
   return (
     <DashboardSection
       title="Dashboard"
@@ -42,7 +43,7 @@ const DashboardPage: FC = () => {
             (activePlan ? (
               <>
                 <div className="flex items-center justify-between text-xl text-default-500 font-normal">
-                  <p>Plan: {activePlan.name}</p>
+                  <p>Plan: {activePlan.plan.name}</p>
                   <p className="text-base">
                     {activePlan.duration} {activePlan.duration_unit}
                   </p>

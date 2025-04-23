@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import { useActivePlanCookie, useUserCookie } from "./use-cookies";
+import { useUserCookie } from "./use-cookies";
 import axios, { AxiosError } from "axios";
 import { LOGOUT_ROUTE } from "@/lib/constants";
 import { addToast } from "@heroui/react";
@@ -7,7 +7,6 @@ import { addToast } from "@heroui/react";
 export const useLogout = () => {
   const router = useRouter();
   const { user, removeUserCookie } = useUserCookie();
-  const { removeActivePlanCookie } = useActivePlanCookie();
 
   const handleLogout = async () => {
     try {
@@ -26,7 +25,6 @@ export const useLogout = () => {
       if (res.status) {
         addToast({ color: "success", description: res.message });
         // removeUserCookie();
-        // removeActivePlanCookie();
         // router.refresh();
       } else addToast({ color: "danger", description: res.message });
     } catch (error) {
@@ -39,7 +37,6 @@ export const useLogout = () => {
       addToast({ color: "danger", description: errorMessage });
     } finally {
       removeUserCookie();
-      removeActivePlanCookie();
       router.refresh();
     }
   };

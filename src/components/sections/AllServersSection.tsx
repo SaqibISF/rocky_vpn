@@ -1,9 +1,10 @@
 "use client";
 
-import React, { FC, useMemo } from "react";
+import React, { FC, useMemo, useState } from "react";
 import Section from "./Section";
 import {
   getKeyValue,
+  Image,
   Pagination,
   Spinner,
   Table,
@@ -13,57 +14,41 @@ import {
   TableHeader,
   TableRow,
 } from "@heroui/react";
-// import axios from "axios";
-// import { GET_SERVERS_ROUTE } from "@/lib/constants";
+import { GET_SERVERS_ROUTE } from "@/lib/constants";
 import useSWR from "swr";
+import { VPN_SERVER } from "@/types";
+import { CheckedIcon } from "@/icons";
 
 const fetcher = (...args: [RequestInfo | URL, RequestInit?]) =>
   fetch(...args).then((res) => res.json());
 
 const AllServersSection: FC = () => {
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
 
-  const { data, isLoading } = useSWR<{
-    count: number;
-    results: { [key: string]: string }[];
-  }>(`https://swapi.py4e.com/api/people?page=${page}`, fetcher, {
+  const { data: servers, isLoading } = useSWR<{
+    data: VPN_SERVER[];
+    meta: { total: number; per_page: number };
+  }>(GET_SERVERS_ROUTE(page), fetcher, {
     keepPreviousData: true,
   });
 
-  const rowsPerPage = 10;
+  const rowsPerPage = servers?.meta.per_page ?? 10;
 
   const pages = useMemo(() => {
-    return data?.count ? Math.ceil(data.count / rowsPerPage) : 0;
-  }, [data?.count, rowsPerPage]);
+    return servers?.meta.total
+      ? Math.ceil(servers.meta.total / rowsPerPage)
+      : 0;
+  }, [servers?.meta.total, rowsPerPage]);
 
   const loadingState =
-    isLoading || data?.results.length === 0 ? "loading" : "idle";
-
-  //   useEffect(() => {
-  //     const fetchServers = async () => {
-  //       try {
-  //         const res = await axios
-  //           .get(GET_SERVERS_ROUTE, {
-  //             headers: {
-  //               Accept: "application/json",
-  //             },
-  //           })
-  //           .then((res) => res.data);
-
-  //         console.log(res);
-  //       } catch (error) {}
-  //     };
-
-  //     fetchServers();
-  //   }, []);
+    isLoading || servers?.data.length === 0 ? "loading" : "idle";
 
   return (
     <Section heading="All Servers Location" isLeftCornerGradient>
       <Table
         aria-label="VPN Servers"
-        selectionMode="single"
         bottomContent={
-          pages > 0 ? (
+          pages > 1 ? (
             <div className="flex w-full justify-center">
               <Pagination
                 isCompact
@@ -77,15 +62,17 @@ const AllServersSection: FC = () => {
             </div>
           ) : null
         }
+        classNames={{ th: "text-white bg-primary", wrapper: "bg-opacity-40" }}
       >
         <TableHeader>
-          <TableColumn key="name">Name</TableColumn>
-          <TableColumn key="height">Height</TableColumn>
-          <TableColumn key="mass">Mass</TableColumn>
-          <TableColumn key="birth_year">Birth year</TableColumn>
+          <TableColumn key="name">Country</TableColumn>
+          <TableColumn key="sub_server">City</TableColumn>
+          <TableColumn key="ad_block">AdBlock</TableColumn>
+          <TableColumn key="threat_block">Threat Block</TableColumn>
+          <TableColumn key="status">Status</TableColumn>
         </TableHeader>
         <TableBody
-          items={data?.results ?? []}
+          items={servers?.data ?? []}
           loadingContent={<Spinner />}
           loadingState={loadingState}
           emptyContent="No Servers Found"
@@ -93,7 +80,25 @@ const AllServersSection: FC = () => {
           {(item) => (
             <TableRow key={item?.name}>
               {(columnKey) => (
-                <TableCell>{getKeyValue(item, columnKey)}</TableCell>
+                <TableCell className="capitalize">
+                  {columnKey === "name" ? (
+                    <div className="min-w-32 flex sm:flex-row flex-col sm:items-center gap-y-2 gap-x-10">
+                      <Image
+                        alt={item.name}
+                        src={item.image_url}
+                        className="w-9 h-7 rounded-md"
+                      />
+                      {item.name}
+                    </div>
+                  ) : columnKey === "sub_server" ? (
+                    item.sub_server.name
+                  ) : columnKey === "ad_block" ||
+                    columnKey === "threat_block" ? (
+                    <CheckedIcon />
+                  ) : (
+                    getKeyValue(item, columnKey)
+                  )}
+                </TableCell>
               )}
             </TableRow>
           )}

@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Plan, PlansState } from "@/types";
+import { Plan, PlansState, PurchasedPlan } from "@/types";
 
 const initialState: PlansState = {
   isPlansLoadedOnce: false,
   plans: [],
+  isActivePlanLoadedOnce: false,
+  activePlan: null,
 };
 
 const plansSlice = createSlice({
@@ -14,9 +16,14 @@ const plansSlice = createSlice({
       state.isPlansLoadedOnce = true;
       state.plans = action.payload;
     },
+
+    setActivePlan: (state, action: PayloadAction<PurchasedPlan>) => {
+      state.isActivePlanLoadedOnce = true;
+      state.activePlan = action.payload;
+    },
   },
 });
 
-export const { setPlans } = plansSlice.actions;
+export const { setPlans, setActivePlan } = plansSlice.actions;
 
 export default plansSlice.reducer;

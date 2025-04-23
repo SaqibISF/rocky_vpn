@@ -95,13 +95,16 @@ const SideBar: FC<{ className?: string }> = ({ className }) => {
 };
 
 const DashboardSection: FC<{
-  title: string;
-  heading: string;
+  title?: string;
+  heading?: string;
   children?: ReactNode;
 }> = ({ title, heading, children }) => (
-  <section className="space-y-6 lg:px-8 px-6 py-20 lg:py-14">
-    <span className="text-accent sm:text-xl text-lg font-bold">{title}</span>
-    <h2 className="sm:text-3xl text-2xl font-bold">{heading}</h2>
+  <section className="space-y-6 lg:px-8 px-6 pb-20 lg:pb-14">
+    {title && (
+      <span className="text-accent sm:text-xl text-lg font-bold">{title}</span>
+    )}
+    
+    {heading && <h2 className="sm:text-3xl text-2xl font-bold">{heading}</h2>}
     {children}
   </section>
 );
@@ -151,7 +154,7 @@ const DashboardLayout: FC<{
           <Divider orientation="vertical" />
         </div>
 
-        <div className="flex-1 relative">
+        <div className="flex-1 relative pt-20 lg:pt-14">
           <Tooltip content="dashboard" placement="bottom-start">
             <Button
               variant="light"

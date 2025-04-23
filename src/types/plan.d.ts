@@ -10,19 +10,19 @@ export type Plan = {
   updated_at: string;
 };
 
-export type ActivePlan = {
+export type PurchasedPlan = {
   id: number;
-  name: string;
-  slug: string;
+  plan: Plan;
+  plan_id: number;
   amount_paid: string;
   start_date: string;
   end_date: string;
-  duration: number;
-  duration_unit: string;
   status: "active" | "cancelled" | "expired";
 };
 
 export type PlansState = {
   isPlansLoadedOnce: boolean;
   plans: Plan[];
+  isActivePlanLoadedOnce: boolean;
+  activePlan: PurchasedPlan | null;
 };

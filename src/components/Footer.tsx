@@ -2,7 +2,6 @@
 
 import React, { FC, FormEvent, useState } from "react";
 import { AppLogo, ShiningStar } from "@/icons";
-import LanguageChanger from "./LanguageChanger";
 import Link from "next/link";
 import { Button, Divider, Form, Input } from "@heroui/react";
 import { PRIVACY_POLICY_PAGE_PATH } from "@/lib/pathnames";
@@ -62,10 +61,7 @@ const Footer: FC = () => {
           backgroundRepeat: "revert",
         }}
       >
-        <div className="w-full flex justify-between items-center py-12 lg:py-14">
-          <AppLogo className="w-32 h-auto" />
-          <LanguageChanger />
-        </div>
+        <AppLogo className="w-32 h-auto py-12 lg:py-14" />
 
         <Divider />
 

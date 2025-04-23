@@ -33,8 +33,6 @@ import DashboardIcon from "./DashboardIcon";
 import SubscriptionIcon from "./SubscriptionIcon";
 import SettingsIcon from "./SettingsIcon";
 import SignOutIcon from "./SignOutIcon";
-import CreditCardIcon from "./CreditCardIcon";
-import VPNIcon from "./VPNIcon";
 import HeadphoneIcon from "./HeadphoneIcon";
 import ShiningStar from "./ShiningStar";
 import WorldMap from "./WorldMap";
@@ -80,8 +78,6 @@ export {
   SubscriptionIcon,
   SettingsIcon,
   SignOutIcon,
-  CreditCardIcon,
-  VPNIcon,
   HeadphoneIcon,
   ShiningStar,
   WorldMap,
