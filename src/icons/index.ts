@@ -41,6 +41,9 @@ import CircleExclamation from "./CircleExclamation";
 import ThumbsUpIcon from "./ThumbsUpIcon";
 import VerifiedIcon from "./VerifiedIcon";
 import ErrorIcon from "./ErrorIcon";
+import LocationDotIcon from "./LocationDotIcon";
+import CityIcon from "./CityIcon";
+import StateIcon from "./StateIcon";
 
 export {
   AppLogo,
@@ -86,4 +89,7 @@ export {
   ThumbsUpIcon,
   VerifiedIcon,
   ErrorIcon,
+  LocationDotIcon,
+  CityIcon,
+  StateIcon,
 };

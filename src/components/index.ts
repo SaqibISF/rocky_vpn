@@ -3,6 +3,7 @@ import ChangeEmailDialog from "./ChangeEmailDialog";
 import ChangePasswordDialog from "./ChangePasswordDialog";
 import DeleteAccountDialog from "./DeleteAccountDialog";
 import PaymentHistoryTable from "./PaymentHistoryTable";
+import ChangeBillingAddressDialog from "./ChangeBillingAddressDialog";
 
 export {
   ChangeNameDialog,
@@ -10,4 +11,5 @@ export {
   ChangePasswordDialog,
   DeleteAccountDialog,
   PaymentHistoryTable,
+  ChangeBillingAddressDialog,
 };

@@ -2,10 +2,12 @@
 
 import React, { FC } from "react";
 import { DashboardSection } from "../layout";
-import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
+import { Card, CardBody, CardHeader, Divider, Spinner } from "@heroui/react";
 import { useUserCookie } from "@/hooks/use-cookies";
 import { useAppState } from "@/hooks/use-app-state";
+import { useBillingAddress } from "@/hooks/use-billing-address";
 import {
+  ChangeBillingAddressDialog,
   ChangeEmailDialog,
   ChangeNameDialog,
   ChangePasswordDialog,
@@ -16,6 +18,7 @@ import {
 const BillingDetailsPage: FC = () => {
   const { isAppMounted } = useAppState();
   const { user } = useUserCookie();
+  const { isBillingAddressLoading, billingAddress } = useBillingAddress();
   return (
     <>
       <DashboardSection title="My Account" heading="User Information">
@@ -76,8 +79,81 @@ const BillingDetailsPage: FC = () => {
           </CardBody>
         </Card>
       </DashboardSection>
+
       <DashboardSection title="Billing Details" heading="Payment History">
         <PaymentHistoryTable />
+
+        <Card className="p-6 bg-opacity-35">
+          <CardHeader className="text-3xl font-bold">
+            Billing Address
+          </CardHeader>
+          <Divider />
+          <CardBody className="md:flex-row md:items-center justify-between gap-6">
+            {isBillingAddressLoading && <Spinner className="mx-auto" />}
+
+            {!isBillingAddressLoading && !billingAddress && (
+              <p className="text-default-500 text-lg font-normal">
+                No Billing Address Found
+              </p>
+            )}
+
+            {!isBillingAddressLoading && billingAddress && (
+              <div className="space-y-2 md:w-2/3">
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <h4 className="text-xl font-semibold w-40">Name:</h4>
+                  <span className="text-default-500 text-lg font-normal ml-2">
+                    {billingAddress.name}
+                  </span>
+                </div>
+
+                <Divider className="sm:hidden" />
+
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <h4 className="text-xl font-semibold w-40">Email Address:</h4>
+                  <span className="text-default-500 text-lg font-normal ml-2">
+                    {user.email}
+                  </span>
+                </div>
+
+                <Divider className="sm:hidden" />
+
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <h4 className="text-xl font-semibold w-40">Address:</h4>
+                  <span className="text-default-500 text-lg font-normal ml-2">
+                    {billingAddress.address}
+                  </span>
+                </div>
+
+                <Divider className="sm:hidden" />
+
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <h4 className="text-xl font-semibold w-40">City:</h4>
+                  <span className="text-default-500 text-lg font-normal ml-2">
+                    {billingAddress.city}
+                  </span>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <h4 className="text-xl font-semibold w-40">State:</h4>
+                  <span className="text-default-500 text-lg font-normal ml-2">
+                    {billingAddress.state}
+                  </span>
+                </div>
+
+                <Divider className="sm:hidden" />
+
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <h4 className="text-xl font-semibold w-40">Postal Code:</h4>
+                  <span className="text-default-500 text-lg font-normal ml-2">
+                    {billingAddress.postal_code}
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {!isBillingAddressLoading && <ChangeBillingAddressDialog />}
+          </CardBody>
+        </Card>
       </DashboardSection>
     </>
   );

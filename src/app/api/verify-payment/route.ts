@@ -16,8 +16,15 @@ export async function POST(request: Request) {
       paymentIntent
     );
 
+    const paymentMethod = await stripe.paymentMethods.retrieve(
+      verifyPaymentIntent.payment_method as string
+    );
+
     return NextResponse.json(
-      { paymentStatus: verifyPaymentIntent.status === "succeeded" },
+      {
+        paymentStatus: verifyPaymentIntent.status === "succeeded",
+        billing_details: paymentMethod.billing_details,
+      },
       { status: 200 }
     );
   } catch (error) {

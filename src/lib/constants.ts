@@ -35,3 +35,7 @@ export const UPDATE_USER_INFO_ROUTE = REST_API_BASE_URL + "/user/update";
 export const UPDATE_USER_PASSWORD_ROUTE =
   REST_API_BASE_URL + "/user/update-password";
 export const DELETE_USER_ACCOUNT_ROUTE = REST_API_BASE_URL + "/user/delete";
+
+export const GET_BILLING_ADDRESS_ROUTE = REST_API_BASE_URL + "/billing-address";
+export const UPDATE_BILLING_ADDRESS_ROUTE =
+  REST_API_BASE_URL + "/billing-address/store";
