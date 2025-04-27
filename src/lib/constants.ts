@@ -28,6 +28,8 @@ export const GET_LEGAL_NOTES_ROUTE = REST_API_BASE_URL + "/options";
 export const ADD_PURCHASE_PLAN_ROUTE = REST_API_BASE_URL + "/purchase/add";
 export const GET_PURCHASE_ACTIVE_PLAN_ROUTE =
   REST_API_BASE_URL + "/purchase/active";
+export const GET_PURCHASE_PLAN_ROUTE = (purchaseId: number | string) =>
+  `${REST_API_BASE_URL}/purchase/${purchaseId}`;
 export const GET_PURCHASE_HISTORY_ROUTE = (page: number) =>
   `${REST_API_BASE_URL}/purchase/history?page=${page}`;
 

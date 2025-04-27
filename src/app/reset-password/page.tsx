@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, Suspense, useState } from "react";
 import { Section } from "@/components/sections";
 import { LOGIN_PAGE_PATH } from "@/lib/pathnames";
 import {
@@ -189,4 +189,10 @@ const ResetPasswordPage: FC = () => {
   );
 };
 
-export default ResetPasswordPage;
+const Page: FC = () => (
+  <Suspense>
+    <ResetPasswordPage />
+  </Suspense>
+);
+
+export default Page;

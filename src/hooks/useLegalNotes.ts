@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAppState } from "./use-app-state";

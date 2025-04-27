@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, Suspense } from "react";
 import { usePlans } from "@/hooks/usePlans";
 import { Section } from "@/components/sections";
 import CheckoutForm from "@/components/CheckoutForm";
@@ -107,4 +107,10 @@ const CheckOutPage: FC = () => {
   );
 };
 
-export default CheckOutPage;
+const Page: FC = () => (
+  <Suspense>
+    <CheckOutPage />
+  </Suspense>
+);
+
+export default Page;

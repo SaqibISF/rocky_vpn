@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
 import { cn } from "@/lib/utils";
 import { Fira_Code, Inter } from "next/font/google";
-import Footer from "@/components/Footer";
 import MainLayout from "@/components/MainLayout";
 
 export const fontSans = Inter({
@@ -57,7 +56,6 @@ export default function RootLayout({
           <MainLayout className="flex-grow overflow-hidden">
             {children}
           </MainLayout>
-          <Footer />
         </Providers>
       </body>
     </html>

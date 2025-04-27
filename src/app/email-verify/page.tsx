@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, Suspense, useEffect, useState } from "react";
 import { notFound, useSearchParams } from "next/navigation";
 import axios, { AxiosError } from "axios";
 import { EMAIL_VERIFICATION_ROUTE } from "@/lib/constants";
@@ -121,4 +121,10 @@ const EmailVerificationPage: FC = () => {
   );
 };
 
-export default EmailVerificationPage;
+const Page: FC = () => (
+  <Suspense>
+    <EmailVerificationPage />
+  </Suspense>
+);
+
+export default Page;

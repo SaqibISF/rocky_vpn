@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC } from "react";
-import { DashboardSection } from "../layout";
+import { DashboardSection } from "@/components";
 import { Button, Card, CardBody, CardHeader, Divider } from "@heroui/react";
 import { useActivePlan } from "@/hooks/usePlans";
 import { getFormattedDate } from "@/lib/utils";

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC } from "react";
-import { DashboardSection } from "../layout";
+import { DashboardSection } from "@/components";
 import { Card, CardBody, CardHeader, Divider, Spinner } from "@heroui/react";
 import { useUserCookie } from "@/hooks/use-cookies";
 import { useAppState } from "@/hooks/use-app-state";

@@ -5,6 +5,7 @@ import axios, { AxiosError } from "axios";
 import {
   GET_PLANS_ROUTE,
   GET_PURCHASE_ACTIVE_PLAN_ROUTE,
+  GET_PURCHASE_PLAN_ROUTE,
 } from "@/lib/constants";
 import { Plan, PurchasedPlan } from "@/types";
 import { setActivePlan, setPlans } from "@/store/plans.slice";
@@ -61,7 +62,7 @@ export const useActivePlan = () => {
 
   const [isActivePlanLoading, setLoading] = useState<boolean>(true);
 
-  const fetchPlans = useCallback(async () => {
+  const fetchActivePlan = useCallback(async () => {
     try {
       if (isActivePlanLoadedOnce) return;
       const response = await axios
@@ -93,8 +94,54 @@ export const useActivePlan = () => {
   }, []);
 
   useEffect(() => {
-    fetchPlans();
-  }, [fetchPlans]);
+    fetchActivePlan();
+  }, [fetchActivePlan]);
 
   return { isActivePlanLoading, activePlan } as const;
+};
+
+export const usePurchasedPlan = (
+  purchaseId: number | string,
+  token?: string
+) => {
+  const { user } = useUserCookie();
+  const [purchasedPlan, setPurchasedPlan] = useState<PurchasedPlan>();
+  const [isPurchasedPlanLoading, setLoading] = useState<boolean>(true);
+
+  const fetchPurchasedPlan = useCallback(async () => {
+    try {
+      const response = await axios
+        .get<{ status: boolean; purchase: PurchasedPlan }>(
+          GET_PURCHASE_PLAN_ROUTE(purchaseId),
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token ? token : user.access_token}`,
+            },
+          }
+        )
+        .then((res) => res.data);
+      if (response.status) {
+        console.log(response.purchase);
+        setPurchasedPlan(response.purchase);
+      }
+    } catch (error) {
+      const errorMessage =
+        error instanceof AxiosError
+          ? error.response
+            ? error.response.data.message
+            : error.message
+          : "Failed to Load Active Plan";
+      addToast({ color: "danger", description: errorMessage });
+    } finally {
+      setLoading(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetchPurchasedPlan();
+  }, [fetchPurchasedPlan]);
+
+  return { isPurchasedPlanLoading, purchasedPlan } as const;
 };

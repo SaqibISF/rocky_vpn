@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, Suspense, useEffect, useState } from "react";
 import { notFound, useSearchParams } from "next/navigation";
 import { useUserCookie } from "@/hooks/use-cookies";
 import { ADD_PURCHASE_PLAN_ROUTE } from "@/lib/constants";
@@ -30,7 +30,7 @@ const PaymentProcessingPage: FC = () => {
           }>("/api/verify-payment", { paymentIntent })
           .then((res) => res.data);
 
-          console.log(res)
+        console.log(res);
 
         if (res.paymentStatus) {
           setPaymentStatus(true);
@@ -56,7 +56,7 @@ const PaymentProcessingPage: FC = () => {
             .then((res) => res.data);
 
           if (res.status) {
-            setSuccessMessage(res.message)
+            setSuccessMessage(res.message);
             dispatch(setActivePlan(res.purchase));
           }
         } else {
@@ -137,4 +137,10 @@ const PaymentProcessingPage: FC = () => {
   );
 };
 
-export default PaymentProcessingPage;
+const Page: FC = () => (
+  <Suspense>
+    <PaymentProcessingPage />
+  </Suspense>
+);
+
+export default Page;

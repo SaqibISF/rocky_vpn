@@ -17,6 +17,7 @@ import useSWR from "swr";
 import { PurchasedPlan } from "@/types";
 import { getFormattedDate } from "@/lib/utils";
 import { useUserCookie } from "@/hooks/use-cookies";
+import DownloadInvoiceButton from "./DownloadInvoiceButton";
 
 const PaymentHistoryTable: FC = () => {
   const { user } = useUserCookie();
@@ -79,6 +80,7 @@ const PaymentHistoryTable: FC = () => {
         <TableColumn key="start_date">Start Date</TableColumn>
         <TableColumn key="end_date">End Date</TableColumn>
         <TableColumn key="status">Status</TableColumn>
+        <TableColumn key="invoice">Invoice</TableColumn>
       </TableHeader>
       <TableBody
         items={history?.data ?? []}
@@ -90,15 +92,22 @@ const PaymentHistoryTable: FC = () => {
           <TableRow key={item?.id}>
             {(columnKey) => (
               <TableCell className="capitalize">
-                {columnKey === "name"
-                  ? item.plan.name
-                  : columnKey === "duration"
-                  ? item.plan.duration + " " + item.plan.duration_unit
-                  : columnKey === "amount_paid"
-                  ? "$" + item.amount_paid
-                  : columnKey === "start_date" || columnKey === "end_date"
-                  ? getFormattedDate(getKeyValue(item, columnKey))
-                  : getKeyValue(item, columnKey)}
+                {columnKey === "name" ? (
+                  item.plan.name
+                ) : columnKey === "duration" ? (
+                  item.plan.duration + " " + item.plan.duration_unit
+                ) : columnKey === "amount_paid" ? (
+                  "$" + item.amount_paid
+                ) : columnKey === "start_date" || columnKey === "end_date" ? (
+                  getFormattedDate(getKeyValue(item, columnKey))
+                ) : columnKey === "invoice" ? (
+                  <DownloadInvoiceButton
+                    purchaseId={item.id}
+                    token={user.access_token}
+                  />
+                ) : (
+                  getKeyValue(item, columnKey)
+                )}
               </TableCell>
             )}
           </TableRow>

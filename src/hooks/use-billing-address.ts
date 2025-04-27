@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useUserCookie } from "./use-cookies";
 
-export const useBillingAddress = () => {
+export const useBillingAddress = (token?: string) => {
   const dispatch = useDispatch();
   const { user } = useUserCookie();
   const { billingAddress, isBillingAddressLoadedOnce } = useSelector(
@@ -27,7 +27,7 @@ export const useBillingAddress = () => {
             {
               headers: {
                 Accept: "application/json",
-                Authorization: `Bearer ${user.access_token}`,
+                Authorization: `Bearer ${token ? token : user.access_token}`,
               },
             }
           )

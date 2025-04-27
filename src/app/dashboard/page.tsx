@@ -1,6 +1,6 @@
 "use client";
 import React, { FC } from "react";
-import { DashboardSection } from "./layout";
+import { DashboardSection } from "@/components";
 import { Button } from "@heroui/react";
 import { AvailableDevicesSection } from "@/components/sections";
 import { HeadphoneIcon } from "@/icons";
@@ -45,15 +45,17 @@ const DashboardPage: FC = () => {
                 <div className="flex items-center justify-between text-xl text-default-500 font-normal">
                   <p>Plan: {activePlan.plan.name}</p>
                   <p className="text-base">
-                    {activePlan.duration} {activePlan.duration_unit}
+                    {activePlan.plan.duration} {activePlan.plan.duration_unit}
                   </p>
                 </div>
                 <div className="flex items-center justify-between gap-4 text-xl text-default-500 font-normal">
                   <p>Renewal Date: {getFormattedDate(activePlan.end_date)}</p>
                   <p className="text-base">
                     ${activePlan.amount_paid}/
-                    {activePlan.duration > 1 ? activePlan.duration + " " : ""}
-                    {activePlan.duration_unit}
+                    {activePlan.plan.duration > 1
+                      ? activePlan.plan.duration + " "
+                      : ""}
+                    {activePlan.plan.duration_unit}
                   </p>
                 </div>
               </>
