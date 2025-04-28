@@ -1,12 +1,12 @@
 "use client";
 
 import React, { FC } from "react";
-import { AppLogo } from "@/icons";
 import { Divider, Skeleton, Spinner } from "@heroui/react";
 import { useBillingAddress } from "@/hooks/use-billing-address";
 import { usePurchasedPlan } from "@/hooks/usePlans";
 import { getFormattedDate } from "@/lib/utils";
 import { notFound, useSearchParams } from "next/navigation";
+import AppLogo from "./AppLogo";
 
 const Invoice: FC = () => {
   const searchParams = useSearchParams();

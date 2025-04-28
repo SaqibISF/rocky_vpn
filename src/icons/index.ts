@@ -1,4 +1,4 @@
-import AppLogo from "./AppLogo";
+import AppLogoIcon from "./AppLogoIcon";
 import DownloadIcon from "./DownloadIcon";
 import MoonFilledIcon from "./MoonFilledIcon";
 import SunFilledIcon from "./SunFilledIcon";
@@ -46,7 +46,7 @@ import CityIcon from "./CityIcon";
 import StateIcon from "./StateIcon";
 
 export {
-  AppLogo,
+  AppLogoIcon,
   MoonFilledIcon,
   SunFilledIcon,
   DownloadIcon,

@@ -1,10 +1,11 @@
 "use client";
 
 import React, { FC, FormEvent, useState } from "react";
-import { AppLogo, ShiningStar } from "@/icons";
+import { ShiningStar } from "@/icons";
 import Link from "next/link";
 import { Button, Divider, Form, Input } from "@heroui/react";
 import { PRIVACY_POLICY_PAGE_PATH } from "@/lib/pathnames";
+import AppLogo from "./AppLogo";
 
 const Footer: FC = () => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -61,7 +62,7 @@ const Footer: FC = () => {
           backgroundRepeat: "revert",
         }}
       >
-        <AppLogo className="w-32 h-auto py-12 lg:py-14" />
+        <AppLogo className="py-12 lg:py-14" />
 
         <Divider />
 

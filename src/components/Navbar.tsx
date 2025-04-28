@@ -15,7 +15,6 @@ import { cn } from "@/lib/utils";
 
 import { ThemeSwitch } from "@/components/theme-switch";
 
-import { AppLogo } from "@/icons";
 import {
   DOWNLOADS_PAGE_PATH,
   FEATURES_PAGE_PATH,
@@ -27,6 +26,7 @@ import {
 } from "@/lib/pathnames";
 import { usePathname } from "next/navigation";
 import AuthButton from "./AuthButton";
+import AppLogo from "./AppLogo";
 
 const Navbar: FC = () => {
   const pathname = usePathname();
@@ -54,11 +54,8 @@ const Navbar: FC = () => {
     <HeroUINavbar id="navbar" maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <Link
-            href={HOME_PAGE_PATH}
-            className="flex justify-start items-center gap-1"
-          >
-            <AppLogo className="w-32 h-auto" />
+          <Link href={HOME_PAGE_PATH}>
+            <AppLogo />
           </Link>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
