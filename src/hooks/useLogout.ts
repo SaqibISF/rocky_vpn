@@ -3,6 +3,7 @@ import { useUserCookie } from "./use-cookies";
 import axios, { AxiosError } from "axios";
 import { LOGOUT_ROUTE } from "@/lib/constants";
 import { addToast } from "@heroui/react";
+import { LOGIN_PAGE_PATH } from "@/lib/pathnames";
 
 export const useLogout = () => {
   const router = useRouter();
@@ -37,7 +38,7 @@ export const useLogout = () => {
       addToast({ color: "danger", description: errorMessage });
     } finally {
       removeUserCookie();
-      router.refresh();
+      router.push(LOGIN_PAGE_PATH);
     }
   };
 

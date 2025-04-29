@@ -47,7 +47,7 @@ const PaymentHistoryTable: FC = () => {
   }, [history?.meta.total, rowsPerPage]);
 
   const loadingState =
-    isLoading || history?.data.length === 0 ? "loading" : "idle";
+    isLoading ? "loading" : "idle";
 
   return (
     <Table

@@ -7,12 +7,13 @@ export async function GET(request: Request) {
   const requestURL = new URL(request.url);
   const purchaseId = requestURL.searchParams.get("purchaseId");
   const token = requestURL.searchParams.get("token");
+  const userId = requestURL.searchParams.get("userId");
 
-  if (!purchaseId || !token) {
-    throw new Error("Purchase Id and token are required");
+  if (!purchaseId || !token || !userId) {
+    throw new Error("Purchase Id, User Id and token are required");
   }
 
-  const url = `${protocol}://${host}${INVOICE_PAGE_PATH}?purchaseId=${purchaseId}&token=${token}`;
+  const url = `${protocol}://${host}${INVOICE_PAGE_PATH}?purchaseId=${purchaseId}&token=${token}&userId=${userId}`;
 
   try {
     const browser = await chromium.launch({

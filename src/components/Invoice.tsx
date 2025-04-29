@@ -12,7 +12,8 @@ const Invoice: FC = () => {
   const searchParams = useSearchParams();
   const purchaseId = searchParams.get("purchaseId");
   const token = searchParams.get("token");
-  if (!purchaseId || !token) {
+  const userId = searchParams.get("userId");
+  if (!purchaseId || !token || !userId) {
     notFound();
   }
 
@@ -44,19 +45,77 @@ const Invoice: FC = () => {
       {!isBillingAddressLoading && billingAddress && (
         <>
           <div className="flex justify-between items-start">
-            <div className="space-y-3">
-              <h4 className="text-2xl font-semibold">
-                Invoice #{purchasedPlan?.id}
-              </h4>
-              {purchasedPlan && (
-                <p className="text-sm font-normal">
-                  Date Issued: {getFormattedDate(purchasedPlan.start_date)}
-                </p>
-              )}
+            <div className="space-y-3 w-full max-w-xs">
+              <h4 className="text-primary text-2xl font-semibold">Invoice</h4>
+
+              <table className="w-full text-sm prose-th:font-semibold prose-td:text-center">
+                <thead className="bg-primary text-white">
+                  <tr className="border-b-1 border-default-300">
+                    <th>Invoice #</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody className="prose-tr:border-b-1 last:prose-tr:border-b-0 prose-tr:border-default-300">
+                  {isPurchasedPlanLoading && (
+                    <tr>
+                      <td align="center" colSpan={2}>
+                        <Spinner />
+                      </td>
+                    </tr>
+                  )}
+
+                  {!isPurchasedPlanLoading && purchasedPlan && (
+                    <tr>
+                      <td>{purchasedPlan.id}</td>
+                      <td>
+                        {new Date(
+                          purchasedPlan.start_date
+                        ).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+
+              <table className="w-full text-sm prose-th:font-semibold prose-td:text-center">
+                <thead className="bg-primary text-white">
+                  <tr className="border-b-1 border-default-300">
+                    <th>Customer Id</th>
+                    <th>Terms</th>
+                  </tr>
+                </thead>
+                <tbody className="prose-tr:border-b-1 last:prose-tr:border-b-0 prose-tr:border-default-300">
+                  <tr>
+                    <td>{userId}</td>
+                    <td>Subscription</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table className="w-full text-sm prose-th:font-semibold">
+                <thead className="bg-primary text-white">
+                  <tr className="border-b-1 border-default-300">
+                    <th colSpan={2}>Bill To</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="w-fit">Name:</td>
+                    <td className="w-full">{billingAddress.name}</td>
+                  </tr>
+                  <tr>
+                    <td className="w-fit">Address:</td>
+                    <td className="w-full">
+                      {billingAddress.address}, {billingAddress.state},{" "}
+                      {billingAddress.city}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             <div className="space-y-3 max-w-64 w-full">
-              <AppLogo />
+              <AppLogo className="text-primary" />
               <p className="text-sm font-normal">
                 4517 Washington Ave. Manchester, Kentucky 39495
               </p>
@@ -66,35 +125,11 @@ const Invoice: FC = () => {
 
           <Divider />
 
-          <div className="flex justify-between items-end px-8">
-            <div className="space-y-2">
-              <h4 className="text-2xl font-semibold">Issue For</h4>
-              <table className="w-80 text-sm prose-th:font-semibold prose-th:p-1 prose-th:text-start prose-td:p-1">
-                <tbody>
-                  <tr>
-                    <td>Name:</td>
-                    <td>{billingAddress.name}</td>
-                  </tr>
-                  <tr>
-                    <td>Address:</td>
-                    <td>
-                      {billingAddress.address}, {billingAddress.state},{" "}
-                      {billingAddress.city}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <h6 className="text-sm font-semibold">Order ID::</h6>
-              <span>#{purchasedPlan?.id}</span>
-            </div>
-          </div>
+          <h4 className="text-primary text-2xl font-semibold">Details:</h4>
 
           <div className="w-full max-w-5xl mx-auto border border-default-300 rounded-lg pb-4 overflow-auto">
             <table className="w-full text-sm prose-th:font-semibold prose-th:p-4 prose-th:text-start prose-td:p-4">
-              <thead>
+              <thead className="bg-primary text-white">
                 <tr className="border-b-1 border-default-300">
                   <th>Plan Name</th>
                   <th>Duration</th>
@@ -125,11 +160,11 @@ const Invoice: FC = () => {
             </table>
           </div>
 
-          <div className="flex justify-between items-start mx-8">
+          <div className="flex justify-between items-start">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <h6 className="text-sm font-semibold">Sale by:</h6>
-                <span>Rocky VPN</span>
+                <h6 className="text-primary text-sm font-semibold">Sale by:</h6>
+                <span>RockyVPN</span>
               </div>
               <span>Thanks for your business</span>
             </div>
@@ -157,7 +192,7 @@ const Invoice: FC = () => {
               </tfoot>
             </table>
           </div>
-          <p className="text-sm font-semibold text-center absolute right-0 left-0 bottom-4">
+          <p className="text-primary text-sm font-semibold text-center absolute right-0 left-0 bottom-4">
             Thank you for your purchase!
           </p>
         </>
