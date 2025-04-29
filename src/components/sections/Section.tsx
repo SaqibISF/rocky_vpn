@@ -93,7 +93,7 @@ const Section: FC<{
       )}
 
       {heading && (
-        <h2 className="sm:text-6xl text-5xl font-bold leading-[3.5rem] text-center mb-6">
+        <h2 className="sm:text-5xl text-4xl font-bold leading-[3.5rem] text-center mb-6">
           {heading}
         </h2>
       )}
@@ -105,7 +105,7 @@ const Section: FC<{
       )}
 
       {description && (
-        <p className="text-default-500 px-8 sm:text-2xl text-xl font-medium leading-8 capitalize lg:w-2/3 text-center mb-14">
+        <p className="text-default-500 px-8 text-xl leading-8 capitalize lg:w-2/3 text-center mb-14">
           {description}
         </p>
       )}

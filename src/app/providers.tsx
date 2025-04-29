@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, ReactNode, useEffect } from "react";
+import React, { FC, ReactNode } from "react";
 import { HeroUIProvider, ToastProvider } from "@heroui/react";
 import { ThemeProvider, type ThemeProviderProps } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -23,32 +23,32 @@ export const Providers: FC<{
 }> = ({ className, children, themeProps }) => {
   const router = useRouter();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.getElementById("navbar");
-      const heroSection = document.getElementById("main-section");
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const navbar = document.getElementById("navbar");
+  //     const heroSection = document.getElementById("main-section");
 
-      if (navbar && heroSection) {
-        if (window.scrollY > heroSection.offsetTop + 16) {
-          navbar.classList.add("fixed");
-          navbar.classList.remove("sticky");
-          heroSection.classList.add("pt-20");
-          heroSection.classList.remove("pt-4");
-        } else {
-          navbar.classList.remove("fixed");
-          navbar.classList.add("sticky");
-          heroSection.classList.add("pt-4");
-          heroSection.classList.remove("pt-20");
-        }
-      }
-    };
+  //     if (navbar && heroSection) {
+  //       if (window.scrollY > heroSection.offsetTop + 16) {
+  //         navbar.classList.add("fixed");
+  //         navbar.classList.remove("sticky");
+  //         heroSection.classList.add("pt-20");
+  //         heroSection.classList.remove("pt-4");
+  //       } else {
+  //         navbar.classList.remove("fixed");
+  //         navbar.classList.add("sticky");
+  //         heroSection.classList.add("pt-4");
+  //         heroSection.classList.remove("pt-20");
+  //       }
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <HeroUIProvider navigate={router.push} className={className}>

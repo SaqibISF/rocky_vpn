@@ -13,7 +13,7 @@ import { link as linkStyles } from "@heroui/theme";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-import { ThemeSwitch } from "@/components/theme-switch";
+// import { ThemeSwitch } from "@/components/theme-switch";
 
 import {
   DOWNLOADS_PAGE_PATH,
@@ -51,7 +51,7 @@ const Navbar: FC = () => {
   ];
 
   return (
-    <HeroUINavbar id="navbar" maxWidth="xl" position="sticky">
+    <HeroUINavbar id="navbar" maxWidth="xl" className="bg-transparent">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <Link href={HOME_PAGE_PATH}>
@@ -78,7 +78,7 @@ const Navbar: FC = () => {
 
       <NavbarContent className="flex basis-1/5 sm:basis-full" justify="end">
         <NavbarItem className="flex lg:gap-4 gap-3">
-          <ThemeSwitch />
+          {/* <ThemeSwitch /> */}
 
           <AuthButton
             classNames={{
