@@ -20,7 +20,6 @@ const ArticleSection: FC<{
           label="Loading..."
           variant="spinner"
         />
-        {/* <Loader2 className="animate-spin size-8 mr-2" /> */}
       </span>
     )}
 

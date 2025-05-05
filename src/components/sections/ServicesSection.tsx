@@ -37,8 +37,14 @@ const ServicesSection: FC = () => (
               background:
                 "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(15, 15, 16, 0.00) 100%)",
             }}
+            data-aos="zoom-in"
+            data-aos-duration="1000"
           ></div>
-          <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+          <CardHeader
+            className="pb-0 pt-2 px-4 flex-col items-start"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+          >
             <Image
               className="w-full h-auto"
               src={item.imageSrc}
@@ -50,12 +56,27 @@ const ServicesSection: FC = () => (
               blurDataURL={item.imageSrc}
             />
           </CardHeader>
-          <CardBody className="sm:space-y-4 space-y-3">
-            <span className="text-accent sm:text-2xl text-xl font-bold">
+          <CardBody className="sm:space-y-4 space-y-3 overflow-hidden">
+            <span
+              className="text-accent sm:text-2xl text-xl font-bold inline-block"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               {item.heading}
             </span>
-            <h4 className="sm:text-3xl text-2xl font-bold">{item.title}</h4>
-            <small className="text-default-500 sm:text-xl text-lg font-medium">
+            <h4
+              className="sm:text-3xl text-2xl font-bold"
+              data-aos="zoom-in-up"
+              data-aos-easing="ease-in-out"
+              data-aos-duration="1500"
+            >
+              {item.title}
+            </h4>
+            <small
+              className="text-default-500 sm:text-xl text-lg font-medium"
+              data-aos="zoom-in-up"
+              data-aos-duration="1500"
+            >
               {item.description}
             </small>
           </CardBody>

@@ -82,8 +82,16 @@ const AdvantagesSection: FC<{
           description:
             "Our pioneering VPN protocol, Lightway is engineered for a faster, secure, and more reliable VPN experience.",
         },
-      ].map(({ Icon, heading, description }) => (
-        <div key={heading} className="flex justify-center">
+      ].map(({ Icon, heading, description }, index) => (
+        <div
+          key={heading}
+          className="flex justify-center"
+          data-aos={
+            index % 2 === 1 ? "fade-left" : index % 2 === 0 ? "fade-right" : ""
+          }
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
           <span className="px-3">
             <Icon />
           </span>

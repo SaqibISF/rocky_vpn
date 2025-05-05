@@ -17,7 +17,8 @@ import {
 } from "@/icons";
 import { usePlans } from "@/hooks/usePlans";
 import Link from "next/link";
-import { CHECKOUT_PAGE_PATH } from "@/lib/pathnames";
+import { CHECKOUT_PAGE_PATH, LOGIN_PAGE_PATH } from "@/lib/pathnames";
+import { useUserCookie } from "@/hooks/use-cookies";
 
 const PricingSection: FC<{
   isHeroSection?: boolean;
@@ -31,6 +32,7 @@ const PricingSection: FC<{
   isCenterGradient,
 }) => {
   const { isPlansLoading, plans } = usePlans();
+  const { user } = useUserCookie();
   return (
     <Section
       isHeroSection={isHeroSection}
@@ -42,7 +44,7 @@ const PricingSection: FC<{
       isCenterGradient={isCenterGradient}
     >
       {!isPlansLoading && plans.length === 0 && (
-        <Card className="">
+        <Card data-aos="fade-up" data-aos-duration="1500">
           <CardBody>
             <p className="text-lg font-medium text-default-500">
               No plans available at the moment. Please check back later.
@@ -80,7 +82,21 @@ const PricingSection: FC<{
           ))}
 
         {plans.map((plan, index) => (
-          <Card className="p-8 w-full max-w-96 mx-auto relative" key={plan.id}>
+          <Card
+            className="p-8 w-full max-w-96 mx-auto relative bg-opacity-60"
+            key={plan.id}
+            data-aos={
+              (index + 1) % 3 === 1
+                ? "fade-right"
+                : (index + 1) % 3 === 2
+                ? "fade-down"
+                : (index + 1) % 3 === 0
+                ? "fade-left"
+                : ""
+            }
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+          >
             {(index + 1) % 3 === 1 && <PriceCardBackground1 />}
             {(index + 1) % 3 === 2 && <PriceCardBackground2 />}
             {(index + 1) % 3 === 0 && <PriceCardBackground3 />}
@@ -106,7 +122,7 @@ const PricingSection: FC<{
             <CardFooter className="p-0">
               <Button
                 as={Link}
-                href={CHECKOUT_PAGE_PATH(plan.id)}
+                href={user ? CHECKOUT_PAGE_PATH(plan.id) : LOGIN_PAGE_PATH}
                 variant="bordered"
                 radius="full"
                 className="w-full"

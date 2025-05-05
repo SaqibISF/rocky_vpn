@@ -47,7 +47,12 @@ const FAQSection: FC<{
       isRightCornerGradient={isRightCornerGradient}
       isCenterGradient={isCenterGradient}
     >
-      <Accordion variant="splitted" className="max-w-4xl w-full">
+      <Accordion
+        variant="splitted"
+        className="max-w-4xl w-full"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+      >
         {faqs.map((faq, index) => (
           <AccordionItem
             key={index}
@@ -58,7 +63,11 @@ const FAQSection: FC<{
           </AccordionItem>
         ))}
       </Accordion>
-      <p className="text-default-500 text-base font-medium mt-14">
+      <p
+        className="text-default-500 text-base font-medium mt-14"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+      >
         More questions?{" "}
         <Link href={CONTACT_US_PAGE_PATH} className="text-accent font-bold">
           Contact Us.

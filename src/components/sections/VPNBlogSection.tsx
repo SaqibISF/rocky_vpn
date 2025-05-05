@@ -53,6 +53,16 @@ const VPNBlogSection: FC = () => {
           <div
             key={blog.heading + index}
             className="p-3 rounded-lg flex flex-col items-center gap-4 text-center cursor-pointer border-2 border-transparent hover:border-default-400 hover:bg-default-200 dark:hover:bg-gray-900/90 dark:hover:border-default-300"
+            data-aos={
+              (index + 1) % 3 === 1
+                ? "zoom-out-right"
+                : (index + 1) % 3 === 2
+                ? "zoom-out-down"
+                : (index + 1) % 3 === 0
+                ? "zoom-out-left"
+                : ""
+            }
+            data-aos-duration="1500"
           >
             <Image
               alt="HeroUI hero Image with delay"

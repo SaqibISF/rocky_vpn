@@ -15,15 +15,35 @@ const HomeSection: FC = () => (
     className="flex-col lg:flex-row gap-y-12"
   >
     <div className="lg:w-3/5 flex flex-col gap-y-6 px-4 items-center md:items-start text-center md:text-left">
-      <span className="text-accent text-xl font-bold">Rocky VPN</span>
-      <h1 className="text-5xl md:text-7xl font-bold leading-[3.5rem] md:leading-[5rem]">
+      <span
+        className="text-accent text-xl font-bold"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+      >
+        Rocky VPN
+      </span>
+      <h1
+        className="text-5xl md:text-7xl font-bold leading-[3.5rem] md:leading-[5rem]"
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+      >
         Stay{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1A1A78] to-[#0F1657]">
-          Private{" "}
-        </span>
+        <span
+          className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#1A1A78] to-[#0F1657]"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
+          Private
+        </span>{" "}
         and Access Worldwide Content
       </h1>
-      <p className="text-default-500 text-2xl font-medium leading-10">
+      <p
+        className="text-default-500 text-2xl font-medium leading-10"
+        data-aos="zoom-in-up"
+        data-aos-duration="1500"
+      >
         Surf the web without tracking with a VPN, protect your devices &
         identity with an all-in-one app.
       </p>
@@ -32,11 +52,16 @@ const HomeSection: FC = () => (
         variant="shadow"
         radius="full"
         className="self-center sm:self-start"
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
       >
         Get Started
       </Button>
       <div className="w-full px-8 md:px-0 flex flex-wrap items-center justify-between md:justify-start sm:gap-20">
-        <div className="flex flex-col items-start justify-center gap-y-2">
+        <div
+          className="flex flex-col items-start justify-center gap-y-2"
+          data-aos="fade-up-right"
+        >
           <div className="flex">
             {Array.from({ length: 3 }).map((_, index) => (
               <span key={index} className={index !== 0 ? "-ml-2" : ""}>
@@ -53,7 +78,10 @@ const HomeSection: FC = () => (
           </p>
         </div>
 
-        <div className="flex flex-col items-start justify-center gap-y-2">
+        <div
+          className="flex flex-col items-start justify-center gap-y-2"
+          data-aos="flip-down"
+        >
           <div className="text-yellow-500 text-lg md:text-3xl">★★★★☆</div>
           <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold">4.8</h3>
           <p className="text-default-500 text-sm sm:text-base font-medium leading-8">
@@ -61,7 +89,10 @@ const HomeSection: FC = () => (
           </p>
         </div>
 
-        <div className="flex flex-col items-start justify-center gap-y-2">
+        <div
+          className="flex flex-col items-start justify-center gap-y-2"
+          data-aos="fade-up-left"
+        >
           <DownloadIcon />
           <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold">20+ M</h3>
           <p className="text-default-500 text-sm sm:text-base font-medium leading-8">
@@ -70,7 +101,10 @@ const HomeSection: FC = () => (
         </div>
       </div>
     </div>
-    <div className="lg:w-2/5 w-full flex items-center justify-center">
+    <div
+      className="lg:w-2/5 w-full flex items-center justify-center"
+      data-aos="fade-left"
+    >
       <Image
         className="max-w-lg w-full h-auto"
         src="/mockup.png"

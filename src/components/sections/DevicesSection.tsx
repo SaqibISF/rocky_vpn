@@ -4,6 +4,8 @@ import Section from "./Section";
 import { ArrowRightIcon } from "@/icons";
 import { Button } from "@heroui/react";
 import { AvailableDevices } from "./AvailableDevicesSection";
+import Link from "next/link";
+import { DOWNLOADS_PAGE_PATH } from "@/lib/pathnames";
 
 const DevicesSection: FC = () => (
   <Section
@@ -14,7 +16,14 @@ const DevicesSection: FC = () => (
   >
     <div className="flex flex-col items-center justify-center gap-y-14">
       <AvailableDevices />
-      <Button variant="bordered" className="rounded-full w-fit">
+      <Button
+        as={Link}
+        href={DOWNLOADS_PAGE_PATH}
+        variant="bordered"
+        className="rounded-full w-fit"
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
+      >
         See All Devices <ArrowRightIcon />
       </Button>
     </div>

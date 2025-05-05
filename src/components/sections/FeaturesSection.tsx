@@ -31,8 +31,21 @@ const FeaturesSection: FC = () => (
           description:
             "Connect safely to any Wi-Fi network, even unsecured public networks.",
         },
-      ].map((item) => (
-        <Card key={item.imageSrc} className="space-y-4 p-4 mx-auto">
+      ].map((item, index) => (
+        <Card
+          key={item.imageSrc}
+          className="space-y-4 p-4 mx-auto bg-opacity-60"
+          data-aos={
+            (index + 1) % 3 === 1
+              ? "zoom-out-right"
+              : (index + 1) % 3 === 2
+              ? "zoom-out-down"
+              : (index + 1) % 3 === 0
+              ? "zoom-out-left"
+              : ""
+          }
+          data-aos-duration="1500"
+        >
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
             <Image
               className="rounded-2xl w-full h-auto"

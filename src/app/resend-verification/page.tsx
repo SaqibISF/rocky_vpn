@@ -7,7 +7,14 @@ import { EnvelopeIcon } from "@/icons";
 import { RESENT_EMAIL_VERIFICATION_ROUTE } from "@/lib/constants";
 import { LOGIN_PAGE_PATH } from "@/lib/pathnames";
 import { EMAIL_INVALID_ERROR_MESSAGE, EMAIL_REGEX } from "@/lib/utils";
-import { addToast, Button, Card, CardBody, CardFooter, CardHeader } from "@heroui/react";
+import {
+  addToast,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+} from "@heroui/react";
 import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -80,12 +87,14 @@ const ResendVerificationPage: FC = () => {
             background:
               "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
           }}
+          data-aos="fade-up"
+          data-aos-duration="1500"
         ></div>
-        <Card className="p-6">
+        <Card className="p-6" data-aos="fade-down" data-aos-duration="1500">
           <CardHeader className="flex-col gap-2">
             <h2 className="text-3xl font-semibold">Resend Verification Link</h2>
             <p className="text-default-500 text-sm font-normal">
-            Enter your email address to receive a new verification link.
+              Enter your email address to receive a new verification link.
             </p>
             {successMessage && (
               <div className="w-full text-success-600 bg-success-50 border-2 border-solid border-success-100 p-3 rounded-xl">

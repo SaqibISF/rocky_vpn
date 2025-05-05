@@ -30,8 +30,6 @@ const PaymentProcessingPage: FC = () => {
           }>("/api/verify-payment", { paymentIntent })
           .then((res) => res.data);
 
-        console.log(res);
-
         if (res.paymentStatus) {
           setPaymentStatus(true);
 

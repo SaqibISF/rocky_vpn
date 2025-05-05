@@ -114,8 +114,10 @@ const SignUpPage: FC = () => {
             background:
               "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
           }}
+          data-aos="fade-up"
+          data-aos-duration="1500"
         ></div>
-        <Card className="p-6">
+        <Card className="p-6" data-aos="fade-down" data-aos-duration="1500">
           <CardHeader className="flex-col gap-2">
             <h2 className="text-3xl font-semibold">Sign Up Now!</h2>
             <p className="text-default-500 text-sm font-normal">

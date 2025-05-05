@@ -11,14 +11,18 @@ const SubscriptionPage: FC = () => {
   return (
     <DashboardSection title="My Subscription" heading="Subscription Details">
       {activePlan && (
-        <Card className="p-6 bg-opacity-60">
+        <Card
+          className="p-6 bg-opacity-60"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <CardHeader className="flex-col items-start gap-3">
             <h5 className="text-default-500 text-sm font-bold">Vpn Services</h5>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
               <h4 className="text-lg font-bold">
                 {activePlan.plan.duration} {activePlan.plan.duration_unit} of
-                VPN{" "}
+                VPN
               </h4>
               {/* <p className="text-white bg-primary py-0.5 px-2 text-xs font-semibold sm:ml-6 rounded-xl">
                 Free Trail : 7 days left

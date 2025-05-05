@@ -18,6 +18,8 @@ import {
   YoutubeIcon,
 } from "@/icons";
 import { Button } from "@heroui/react";
+import Link from "next/link";
+import { DOWNLOADS_PAGE_PATH } from "@/lib/pathnames";
 
 const WhatIsVPNPage: FC = () => {
   return (
@@ -30,11 +32,15 @@ const WhatIsVPNPage: FC = () => {
         isRightCornerGradient
       >
         <Button
+          as={Link}
+          href={DOWNLOADS_PAGE_PATH}
           variant="shadow"
           color="primary"
           endContent={<ArrowRightIcon />}
           radius="full"
           size="lg"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
         >
           Get RockyVPN
         </Button>
@@ -87,8 +93,20 @@ const WhatIsVPNPage: FC = () => {
               description:
                 "Streaming enthusiasts can use a VPN to avoid ISP throttling and enjoy uninterrupted streaming of movies, TV shows, and live sports while protecting their privacy. A VPN shields your online activity from your ISP, so even during peak times you won’t be susceptible to content-based throttling.",
             },
-          ].map(({ Icon, heading, description }) => (
-            <div key={heading} className="flex justify-center">
+          ].map(({ Icon, heading, description }, index) => (
+            <div
+              key={heading}
+              className="flex justify-center"
+              data-aos={
+                index % 2 === 1
+                  ? "fade-left"
+                  : index % 2 === 0
+                  ? "fade-right"
+                  : ""
+              }
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+            >
               <span className="px-3">
                 <Icon />
               </span>
@@ -119,8 +137,20 @@ const WhatIsVPNPage: FC = () => {
               description:
                 "A newer, lightweight protocol designed for top-tier performance and robust encryption.",
             },
-          ].map(({ heading, description }) => (
-            <div key={heading} className="w-3/4 mx-auto space-y-4 px-2">
+          ].map(({ heading, description }, index) => (
+            <div
+              key={heading}
+              className="w-3/4 mx-auto space-y-4 px-2"
+              data-aos={
+                index % 2 === 1
+                  ? "fade-left"
+                  : index % 2 === 0
+                  ? "fade-right"
+                  : ""
+              }
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+            >
               <h4 className="text-2xl font-semibold">{heading}</h4>
               <p className="text-default-600 text-base leading-7 font-normal">
                 {description}

@@ -16,11 +16,26 @@ const ServersPage: FC = () => (
       isCenterGradient
     >
       <div className="lg:w-3/5 flex flex-col gap-y-6 px-4  text-center sm:text-left">
-        <span className="text-accent text-xl font-bold">Rocky VPN</span>
-        <h1 className="text-4xl sm:text-5xl font-bold leading-[3.5rem] md:leading-[5rem]">
+        <span
+          className="text-accent text-xl font-bold"
+          data-aos="fade-up"
+          data-aos-duration="1500"
+        >
+          Rocky VPN
+        </span>
+        <h1
+          className="text-4xl sm:text-5xl font-bold leading-[3.5rem] md:leading-[5rem]"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
           VPN Server Locations
         </h1>
-        <div className="space-y-5">
+        <div
+          className="space-y-5"
+          data-aos="zoom-in-up"
+          data-aos-duration="1500"
+        >
           {[
             "No Session or Traffic Logging",
             "High Speed and Low Latency",
@@ -43,11 +58,13 @@ const ServersPage: FC = () => (
           radius="full"
           endContent={<ArrowRightIcon />}
           className="self-center sm:self-start"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
         >
           View All Location
         </Button>
       </div>
-      <div className="lg:w-2/5 w-full">
+      <div className="lg:w-2/5 w-full" data-aos="fade-left">
         <Image
           className="max-w-[22.5rem] w-full h-auto m-auto"
           src="/earth.png"

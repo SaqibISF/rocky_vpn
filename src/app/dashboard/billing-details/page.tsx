@@ -22,7 +22,11 @@ const BillingDetailsPage: FC = () => {
   return (
     <>
       <DashboardSection title="My Account" heading="User Information">
-        <Card className="p-6 bg-opacity-35">
+        <Card
+          className="p-6 bg-opacity-35"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <CardBody className="sm:flex-row sm:items-center justify-between gap-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold">Name</h3>
@@ -36,7 +40,11 @@ const BillingDetailsPage: FC = () => {
           </CardBody>
         </Card>
 
-        <Card className="p-6 bg-opacity-35">
+        <Card
+          className="p-6 bg-opacity-35"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <CardBody className="sm:flex-row sm:items-center justify-between gap-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold">Email Address</h3>
@@ -50,7 +58,11 @@ const BillingDetailsPage: FC = () => {
           </CardBody>
         </Card>
 
-        <Card className="p-6 bg-opacity-35">
+        <Card
+          className="p-6 bg-opacity-35"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <CardBody className="sm:flex-row sm:items-center justify-between gap-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold">Password</h3>
@@ -60,7 +72,11 @@ const BillingDetailsPage: FC = () => {
           </CardBody>
         </Card>
 
-        <Card className="p-6 bg-opacity-35">
+        <Card
+          className="p-6 bg-opacity-35"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <CardHeader className="text-3xl font-bold">
             Account management
           </CardHeader>
@@ -81,9 +97,15 @@ const BillingDetailsPage: FC = () => {
       </DashboardSection>
 
       <DashboardSection title="Billing Details" heading="Payment History">
-        <PaymentHistoryTable />
+        <div className="w-full" data-aos="fade-down" data-aos-duration="1500">
+          <PaymentHistoryTable />
+        </div>
 
-        <Card className="p-6 bg-opacity-35">
+        <Card
+          className="p-6 bg-opacity-35"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+        >
           <CardHeader className="text-3xl font-bold">
             Billing Address
           </CardHeader>

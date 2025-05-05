@@ -1,5 +1,4 @@
 export const USER_COOKIE_KEY = "rocky_user";
-export const ACTIVE_PLAN_COOKIE_KEY = "rocky_user_active_plan";
 
 export const STRIPE_PUBLISHABLE_KEY =
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!;

@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import "./globals.css";
+import "aos/dist/aos.css";
 import type { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
 import { cn } from "@/lib/utils";

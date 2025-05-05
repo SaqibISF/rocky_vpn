@@ -12,10 +12,16 @@ const GlobalServerNetworkSection: FC = () => (
     className="z-[1]"
     isCenterGradient
   >
-    <WorldMap className="absolute top-28 -z-[1]" />
+    <span
+      className="absolute top-28 -z-[1] pointer-events-none"
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+    >
+      <WorldMap />
+    </span>
 
     <div
-      className="w-full h-[49.75rem] absolute bottom-0 left-0 right-0 z-[1]"
+      className="w-full h-[49.75rem] absolute bottom-0 left-0 right-0 z-[1] pointer-events-none"
       style={{
         background:
           "linear-gradient(180deg, rgba(15, 15, 15, 0.00) 10.03%, #0F0F0F 65.02%)",
@@ -32,6 +38,8 @@ const GlobalServerNetworkSection: FC = () => (
         sizes="100vw"
         placeholder="blur"
         blurDataURL="/global-server-network-section.png"
+        data-aos="zoom-in"
+        data-aos-duration="1000"
       />
       <div className="w-full flex flex-wrap items-center justify-between lg:justify-center gap-16 text-center z-[2]">
         {[
@@ -40,7 +48,12 @@ const GlobalServerNetworkSection: FC = () => (
           { title: "100+", subtitle: "Locations" },
           { title: "Unlimited", subtitle: "Bandwidth" },
         ].map(({ title, subtitle }, index) => (
-          <div key={subtitle + index} className="space-y-4">
+          <div
+            key={subtitle + index}
+            className="space-y-4"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+          >
             <div className="lg:text-5xl text-4xl font-bold">{title}</div>
             <div className="text-default-500 lg:text-2xl text-xl">
               {subtitle}

@@ -45,65 +45,72 @@ const AllServersSection: FC = () => {
 
   return (
     <Section heading="All Servers Location" isLeftCornerGradient>
-      <Table
-        aria-label="VPN Servers"
-        bottomContent={
-          pages > 1 ? (
-            <div className="flex w-full justify-center">
-              <Pagination
-                isCompact
-                showControls
-                showShadow
-                color="primary"
-                page={page}
-                total={pages}
-                onChange={(page) => setPage(page)}
-              />
-            </div>
-          ) : null
-        }
-        classNames={{ th: "text-white bg-primary", wrapper: "bg-opacity-40" }}
+      <div
+        className="w-full"
+        data-aos="flip-up"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
       >
-        <TableHeader>
-          <TableColumn key="name">Country</TableColumn>
-          <TableColumn key="sub_server">City</TableColumn>
-          <TableColumn key="ad_block">AdBlock</TableColumn>
-          <TableColumn key="threat_block">Threat Block</TableColumn>
-          <TableColumn key="status">Status</TableColumn>
-        </TableHeader>
-        <TableBody
-          items={servers?.data ?? []}
-          loadingContent={<Spinner />}
-          loadingState={loadingState}
-          emptyContent="No Servers Found"
+        <Table
+          aria-label="VPN Servers"
+          bottomContent={
+            pages > 1 ? (
+              <div className="flex w-full justify-center">
+                <Pagination
+                  isCompact
+                  showControls
+                  showShadow
+                  color="primary"
+                  page={page}
+                  total={pages}
+                  onChange={(page) => setPage(page)}
+                />
+              </div>
+            ) : null
+          }
+          classNames={{ th: "text-white bg-primary", wrapper: "bg-opacity-40" }}
         >
-          {(item) => (
-            <TableRow key={item?.name}>
-              {(columnKey) => (
-                <TableCell className="capitalize">
-                  {columnKey === "name" ? (
-                    <div className="min-w-32 flex sm:flex-row flex-col sm:items-center gap-y-2 gap-x-10">
-                      <Image
-                        alt={item.name}
-                        src={item.image_url}
-                        className="w-9 h-7 rounded-md"
-                      />
-                      {item.name}
-                    </div>
-                  ) : columnKey === "sub_server" ? (
-                    item.sub_server.name
-                  ) : columnKey === "ad_block" ||
-                    columnKey === "threat_block" ? (
-                    <CheckedIcon />
-                  ) : (
-                    getKeyValue(item, columnKey)
-                  )}
-                </TableCell>
-              )}
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+          <TableHeader>
+            <TableColumn key="name">Country</TableColumn>
+            <TableColumn key="sub_server">City</TableColumn>
+            <TableColumn key="ad_block">AdBlock</TableColumn>
+            <TableColumn key="threat_block">Threat Block</TableColumn>
+            <TableColumn key="status">Status</TableColumn>
+          </TableHeader>
+          <TableBody
+            items={servers?.data ?? []}
+            loadingContent={<Spinner />}
+            loadingState={loadingState}
+            emptyContent="No Servers Found"
+          >
+            {(item) => (
+              <TableRow key={item?.name}>
+                {(columnKey) => (
+                  <TableCell className="capitalize">
+                    {columnKey === "name" ? (
+                      <div className="min-w-32 flex sm:flex-row flex-col sm:items-center gap-y-2 gap-x-10">
+                        <Image
+                          alt={item.name}
+                          src={item.image_url}
+                          className="w-9 h-7 rounded-md"
+                        />
+                        {item.name}
+                      </div>
+                    ) : columnKey === "sub_server" ? (
+                      item.sub_server.name
+                    ) : columnKey === "ad_block" ||
+                      columnKey === "threat_block" ? (
+                      <CheckedIcon />
+                    ) : (
+                      getKeyValue(item, columnKey)
+                    )}
+                  </TableCell>
+                )}
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
     </Section>
   );
 };

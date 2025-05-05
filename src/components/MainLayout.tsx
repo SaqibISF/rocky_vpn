@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FC, ReactNode, useEffect } from "react";
+import AOS from "aos";
 import { useDispatch } from "react-redux";
 import { setAppMounted } from "@/store/app.slice";
 import Footer from "./Footer";
@@ -14,6 +15,7 @@ const MainLayout: FC<{ className?: string; children: ReactNode }> = ({
   const dispatch = useDispatch();
   const pathname = usePathname();
   useEffect(() => {
+    AOS.init();
     dispatch(setAppMounted());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -7,6 +7,8 @@ import {
 } from "@/components/sections";
 import { Button } from "@heroui/react";
 import { ArrowRightIcon } from "@/icons";
+import Link from "next/link";
+import { DOWNLOADS_PAGE_PATH } from "@/lib/pathnames";
 
 const FeaturesPage: FC = () => (
   <>
@@ -17,11 +19,15 @@ const FeaturesPage: FC = () => (
       isRightCornerGradient
     >
       <Button
+        as={Link}
+        href={DOWNLOADS_PAGE_PATH}
         variant="shadow"
         color="primary"
         endContent={<ArrowRightIcon />}
         radius="full"
         size="lg"
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
       >
         Get RockyVPN
       </Button>
