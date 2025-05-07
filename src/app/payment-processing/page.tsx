@@ -12,6 +12,7 @@ import { ErrorIcon, VerifiedIcon } from "@/icons";
 import { PurchasedPlan } from "@/types";
 import { useDispatch } from "react-redux";
 import { setActivePlan } from "@/store/plans.slice";
+import Link from "next/link";
 
 const PaymentProcessingPage: FC = () => {
   const dispatch = useDispatch();
@@ -126,7 +127,12 @@ const PaymentProcessingPage: FC = () => {
             // title="Your payment has been successfully processed. Thank you for your purchase!"
             title={successMessage}
           />
-          <Button href={HOME_PAGE_PATH} color="primary" variant="shadow">
+          <Button
+            as={Link}
+            href={HOME_PAGE_PATH}
+            color="primary"
+            variant="shadow"
+          >
             Back to Home
           </Button>
         </>

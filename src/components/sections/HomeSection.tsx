@@ -5,6 +5,8 @@ import Image from "next/image";
 import { mockupBase64Src } from "@/lib/mockup-base64";
 import { Avatar, Button } from "@heroui/react";
 import { DownloadIcon } from "@/icons";
+import Link from "next/link";
+import { PRICING_PAGE_PATH } from "@/lib/pathnames";
 
 const HomeSection: FC = () => (
   <Section
@@ -48,6 +50,8 @@ const HomeSection: FC = () => (
         identity with an all-in-one app.
       </p>
       <Button
+        as={Link}
+        href={PRICING_PAGE_PATH}
         color="primary"
         variant="shadow"
         radius="full"
@@ -63,11 +67,15 @@ const HomeSection: FC = () => (
           data-aos="fade-up-right"
         >
           <div className="flex">
-            {Array.from({ length: 3 }).map((_, index) => (
-              <span key={index} className={index !== 0 ? "-ml-2" : ""}>
+            {[
+              "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+              "https://i.pravatar.cc/150?u=a04258114e29026702d",
+              "https://i.pravatar.cc/150?u=a04258114e29026302d",
+            ].map((imgSrc, index) => (
+              <span key={imgSrc} className={index !== 0 ? "-ml-2" : ""}>
                 <Avatar
                   className="w-6 h-6 text-tiny"
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                  src={imgSrc}
                 />
               </span>
             ))}
