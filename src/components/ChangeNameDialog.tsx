@@ -108,7 +108,7 @@ const ChangeNameDialog: FC = () => {
                 placeholder="Enter your Name"
                 type="text"
                 endContent={
-                  <UserIcon className="w-5 text-default-500 pointer-events-none" />
+                  <UserIcon className="w-5 text-default-500 !pointer-events-none" />
                 }
                 errorMessage={errors.name?.message}
                 {...register("name", {

@@ -17,7 +17,7 @@ import AppLogo from "./AppLogo";
 const Footer: FC = () => (
   <footer className="w-full relative overflow-hidden">
     <div
-      className="w-[21.875rem] h-[27.125rem] rounded-[27.125rem] absolute blur-[12.5rem] top-16 -right-10 pointer-events-none"
+      className="w-[21.875rem] h-[27.125rem] rounded-[27.125rem] absolute blur-[12.5rem] top-16 -right-10 !pointer-events-none"
       style={{
         background:
           "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
@@ -25,7 +25,7 @@ const Footer: FC = () => (
     ></div>
 
     <div
-      className="size-[34.875rem] rounded-[[34.875rem] absolute blur-[12.5rem] -bottom-8 left-4 pointer-events-none"
+      className="size-[34.875rem] rounded-[[34.875rem] absolute blur-[12.5rem] -bottom-8 left-4 !pointer-events-none"
       style={{
         background:
           "linear-gradient(180deg, rgba(130, 144, 255, 0.50) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
@@ -42,7 +42,7 @@ const Footer: FC = () => (
     >
       <AppLogo className="py-12 lg:py-14" />
 
-      <ShiningStar className="absolute top-12 -left-44 sm:left-0 pointer-events-none" />
+      <ShiningStar className="absolute top-12 -left-44 sm:left-0 !pointer-events-none" />
 
       <Divider />
 

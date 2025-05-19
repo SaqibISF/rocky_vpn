@@ -108,7 +108,7 @@ const ChangeEmailDialog: FC = () => {
                 placeholder="you@example.com"
                 type="email"
                 endContent={
-                  <EnvelopeIcon className="w-5 text-default-500 pointer-events-none" />
+                  <EnvelopeIcon className="w-5 text-default-500 !pointer-events-none" />
                 }
                 errorMessage={errors.email?.message}
                 {...register("email", {

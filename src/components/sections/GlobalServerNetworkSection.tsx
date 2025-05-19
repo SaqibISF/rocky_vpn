@@ -13,7 +13,7 @@ const GlobalServerNetworkSection: FC = () => (
     isCenterGradient
   >
     <span
-      className="absolute top-28 -z-[1] pointer-events-none"
+      className="absolute top-28 -z-[1] !pointer-events-none"
       data-aos="zoom-in"
       data-aos-duration="1000"
       data-aos-offset="25"
@@ -22,7 +22,7 @@ const GlobalServerNetworkSection: FC = () => (
     </span>
 
     <div
-      className="w-full h-[49.75rem] absolute bottom-0 left-0 right-0 z-[1] pointer-events-none"
+      className="w-full h-[49.75rem] absolute bottom-0 left-0 right-0 z-[1] !pointer-events-none"
       style={{
         background:
           "linear-gradient(180deg, rgba(15, 15, 15, 0.00) 10.03%, #0F0F0F 65.02%)",

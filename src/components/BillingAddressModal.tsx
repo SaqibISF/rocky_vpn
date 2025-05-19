@@ -114,7 +114,7 @@ const BillingAddressModal: FC<{
               type="text"
               size="md"
               endContent={
-                <UserIcon className="w-5 text-default-500 pointer-events-none" />
+                <UserIcon className="w-5 text-default-500 !pointer-events-none" />
               }
               errorMessage={errors.name?.message}
               {...register("name", {
@@ -136,7 +136,7 @@ const BillingAddressModal: FC<{
               type="text"
               size="md"
               endContent={
-                <LocationDotIcon className="text-default-500 pointer-events-none" />
+                <LocationDotIcon className="text-default-500 !pointer-events-none" />
               }
               errorMessage={errors.address?.message}
               {...register("address", {
@@ -154,7 +154,7 @@ const BillingAddressModal: FC<{
               type="text"
               size="md"
               endContent={
-                <CityIcon className="w-5 text-default-500 pointer-events-none" />
+                <CityIcon className="w-5 text-default-500 !pointer-events-none" />
               }
               errorMessage={errors.city?.message}
               {...register("city", {
@@ -173,7 +173,7 @@ const BillingAddressModal: FC<{
                 type="text"
                 size="md"
                 endContent={
-                  <StateIcon className="w-5 text-default-500 pointer-events-none" />
+                  <StateIcon className="w-5 text-default-500 !pointer-events-none" />
                 }
                 errorMessage={errors.state?.message}
                 {...register("state", {
@@ -191,7 +191,7 @@ const BillingAddressModal: FC<{
                 type="text"
                 size="md"
                 endContent={
-                  <LocationDotIcon className="text-default-500 pointer-events-none" />
+                  <LocationDotIcon className="text-default-500 !pointer-events-none" />
                 }
                 errorMessage={errors.postal_code?.message}
                 {...register("postal_code", {

@@ -109,7 +109,7 @@ const SignUpPage: FC = () => {
         className="max-w-md w-full relative"
       >
         <div
-          className="w-full h-full rounded-xl absolute blur-[5.375rem] pointer-events-none"
+          className="w-full h-full rounded-xl absolute blur-[5.375rem] !pointer-events-none"
           style={{
             background:
               "linear-gradient(180deg, rgba(130, 144, 255, 0.70) 12.38%, rgba(130, 144, 255, 0.00) 100%)",
@@ -148,7 +148,7 @@ const SignUpPage: FC = () => {
               placeholder="Enter your Name"
               type="text"
               endContent={
-                <UserIcon className="w-5 text-default-500 pointer-events-none" />
+                <UserIcon className="w-5 text-default-500 !pointer-events-none" />
               }
               errorMessage={errors.name?.message}
               {...register("name", {
@@ -169,7 +169,7 @@ const SignUpPage: FC = () => {
               placeholder="you@example.com"
               type="email"
               endContent={
-                <EnvelopeIcon className="w-5 text-default-500 pointer-events-none" />
+                <EnvelopeIcon className="w-5 text-default-500 !pointer-events-none" />
               }
               errorMessage={errors.email?.message}
               {...register("email", {
