@@ -5,7 +5,7 @@ import { Button } from "@heroui/react";
 import { AvailableDevicesSection } from "@/components/sections";
 import { HeadphoneIcon } from "@/icons";
 import Link from "next/link";
-import { DOWNLOADS_PAGE_PATH } from "@/lib/pathnames";
+import { DOWNLOADS_PAGE_PATH, PRICING_PAGE_PATH } from "@/lib/pathnames";
 import { useAppState } from "@/hooks/use-app-state";
 import { useUserCookie } from "@/hooks/use-cookies";
 import { getFormattedDate } from "@/lib/utils";
@@ -69,9 +69,21 @@ const DashboardPage: FC = () => {
                 </div>
               </>
             ) : (
-              <p className="text-default-500 text-base font-normal">
-                No, Active Plan Found.
-              </p>
+              <div className="space-y-4">
+                <p className="text-default-500 text-base font-normal">
+                  No, Active Plan Found.
+                </p>
+
+                <Button
+                  as={Link}
+                  href={PRICING_PAGE_PATH}
+                  variant="shadow"
+                  color="primary"
+                  radius="full"
+                >
+                  Upgrade Now
+                </Button>
+              </div>
             ))}
         </div>
 
