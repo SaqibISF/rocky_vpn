@@ -28,6 +28,7 @@ const FeaturesPage: FC = () => (
         size="lg"
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
+        data-aos-offset="25"
       >
         Get RockyVPN
       </Button>

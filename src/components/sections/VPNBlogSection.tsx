@@ -63,6 +63,7 @@ const VPNBlogSection: FC = () => {
                 : ""
             }
             data-aos-duration="1500"
+            data-aos-offset="25"
           >
             <Image
               alt="HeroUI hero Image with delay"

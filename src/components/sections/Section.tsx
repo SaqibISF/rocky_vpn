@@ -91,6 +91,7 @@ const Section: FC<{
           className="text-accent text-2xl font-bold text-center mb-10 inline-block"
           data-aos="fade-up"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           {title}
         </span>
@@ -102,6 +103,7 @@ const Section: FC<{
           data-aos="zoom-in-up"
           data-aos-easing="ease-in-out"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           {heading}
         </h2>
@@ -112,6 +114,7 @@ const Section: FC<{
           className="px-4 sm:text-xl text-base sm:leading-10 leading-9 font-medium md:w-2/3 text-center mt-4 mb-6 inline-block"
           data-aos="fade-down"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           {subtitle}
         </span>
@@ -122,6 +125,7 @@ const Section: FC<{
           className="text-default-500 px-8 text-xl leading-8 capitalize lg:w-2/3 text-center mb-14"
           data-aos="zoom-in-up"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           {description}
         </p>

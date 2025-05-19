@@ -17,6 +17,7 @@ const SubscriptionPage: FC = () => {
           className="p-6 bg-opacity-60"
           data-aos="fade-down"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           <CardHeader className="flex-col items-start gap-3">
             <h5 className="text-default-500 text-sm font-bold">Vpn Services</h5>
@@ -74,6 +75,7 @@ const SubscriptionPage: FC = () => {
           className="p-6 bg-opacity-60 animate-pulse"
           data-aos="fade-down"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           <CardHeader className="flex-col items-start gap-3">
             <Skeleton className="h-4 w-32 rounded"></Skeleton>
@@ -99,6 +101,7 @@ const SubscriptionPage: FC = () => {
           className="p-6 bg-opacity-60"
           data-aos="fade-down"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           <CardHeader className="flex-col items-start gap-3">
             <h5 className="text-default-500 text-sm font-bold">Vpn Services</h5>

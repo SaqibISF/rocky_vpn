@@ -41,6 +41,7 @@ const WhatIsVPNPage: FC = () => {
           size="lg"
           data-aos="fade-up"
           data-aos-anchor-placement="top-bottom"
+          data-aos-offset="25"
         >
           Get RockyVPN
         </Button>
@@ -104,8 +105,8 @@ const WhatIsVPNPage: FC = () => {
                   ? "fade-right"
                   : ""
               }
-              data-aos-offset="300"
               data-aos-easing="ease-in-sine"
+              data-aos-offset="25"
             >
               <span className="px-3">
                 <Icon />
@@ -148,8 +149,8 @@ const WhatIsVPNPage: FC = () => {
                   ? "fade-right"
                   : ""
               }
-              data-aos-offset="300"
               data-aos-easing="ease-in-sine"
+              data-aos-offset="25"
             >
               <h4 className="text-2xl font-semibold">{heading}</h4>
               <p className="text-default-600 text-base leading-7 font-normal">

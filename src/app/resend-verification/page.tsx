@@ -89,8 +89,14 @@ const ResendVerificationPage: FC = () => {
           }}
           data-aos="fade-up"
           data-aos-duration="1500"
+          data-aos-offset="25"
         ></div>
-        <Card className="p-6" data-aos="fade-down" data-aos-duration="1500">
+        <Card
+          className="p-6"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-offset="25"
+        >
           <CardHeader className="flex-col gap-2">
             <h2 className="text-3xl font-semibold">Resend Verification Link</h2>
             <p className="text-default-500 text-sm font-normal">

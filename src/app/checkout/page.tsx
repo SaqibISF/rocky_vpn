@@ -74,6 +74,7 @@ const CheckOutPage: FC = () => {
               className="p-6 w-full lg:w-1/3 bg-opacity-35"
               data-aos="fade-down-right"
               data-aos-duration="1500"
+              data-aos-offset="25"
             >
               <CardHeader className="flex flex-col items-start gap-3">
                 <h3 className="text-lg font-bold">Order Summary</h3>
@@ -102,6 +103,7 @@ const CheckOutPage: FC = () => {
               className="w-full lg:w-2/3"
               data-aos="fade-up-left"
               data-aos-duration="1500"
+              data-aos-offset="25"
             >
               <CheckoutForm
                 planId={plan!.id}

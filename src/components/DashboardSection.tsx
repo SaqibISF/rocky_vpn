@@ -11,6 +11,7 @@ const DashboardSection: FC<{
         className="text-accent sm:text-xl text-lg font-bold inline-block"
         data-aos="fade-up"
         data-aos-duration="1500"
+        data-aos-offset="25"
       >
         {title}
       </span>
@@ -22,6 +23,7 @@ const DashboardSection: FC<{
         data-aos="zoom-in-up"
         data-aos-easing="ease-in-out"
         data-aos-duration="1500"
+        data-aos-offset="25"
       >
         {heading}
       </h2>

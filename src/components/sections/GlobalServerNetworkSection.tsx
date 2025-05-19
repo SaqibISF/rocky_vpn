@@ -16,6 +16,7 @@ const GlobalServerNetworkSection: FC = () => (
       className="absolute top-28 -z-[1] pointer-events-none"
       data-aos="zoom-in"
       data-aos-duration="1000"
+      data-aos-offset="25"
     >
       <WorldMap />
     </span>
@@ -40,6 +41,7 @@ const GlobalServerNetworkSection: FC = () => (
         blurDataURL="/global-server-network-section.png"
         data-aos="zoom-in"
         data-aos-duration="1000"
+        data-aos-offset="25"
       />
       <div className="w-full flex flex-wrap items-center justify-between lg:justify-center gap-16 text-center z-[2]">
         {[
@@ -53,6 +55,7 @@ const GlobalServerNetworkSection: FC = () => (
             className="space-y-4"
             data-aos="fade-up"
             data-aos-duration="1500"
+            data-aos-offset="25"
           >
             <div className="lg:text-5xl text-4xl font-bold">{title}</div>
             <div className="text-default-500 lg:text-2xl text-xl">

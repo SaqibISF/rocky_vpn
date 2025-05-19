@@ -45,6 +45,7 @@ const FeaturesSection: FC = () => (
               : ""
           }
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
             <Image

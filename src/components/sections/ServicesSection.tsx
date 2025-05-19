@@ -39,11 +39,13 @@ const ServicesSection: FC = () => (
             }}
             data-aos="zoom-in"
             data-aos-duration="1000"
+            data-aos-offset="25"
           ></div>
           <CardHeader
             className="pb-0 pt-2 px-4 flex-col items-start"
             data-aos="fade-up"
             data-aos-duration="1500"
+            data-aos-offset="25"
           >
             <Image
               className="w-full h-auto"
@@ -61,6 +63,7 @@ const ServicesSection: FC = () => (
               className="text-accent sm:text-2xl text-xl font-bold inline-block"
               data-aos="fade-up"
               data-aos-duration="1000"
+              data-aos-offset="25"
             >
               {item.heading}
             </span>
@@ -69,6 +72,7 @@ const ServicesSection: FC = () => (
               data-aos="zoom-in-up"
               data-aos-easing="ease-in-out"
               data-aos-duration="1500"
+              data-aos-offset="25"
             >
               {item.title}
             </h4>
@@ -76,6 +80,7 @@ const ServicesSection: FC = () => (
               className="text-default-500 sm:text-xl text-lg font-medium"
               data-aos="zoom-in-up"
               data-aos-duration="1500"
+              data-aos-offset="25"
             >
               {item.description}
             </small>

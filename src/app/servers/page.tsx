@@ -20,14 +20,15 @@ const ServersPage: FC = () => (
           className="text-accent text-xl font-bold"
           data-aos="fade-up"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           Rocky VPN
         </span>
         <h1
           className="text-4xl sm:text-5xl font-bold leading-[3.5rem] md:leading-[5rem]"
           data-aos="fade-right"
-          data-aos-offset="300"
           data-aos-easing="ease-in-sine"
+          data-aos-offset="25"
         >
           VPN Server Locations
         </h1>
@@ -35,6 +36,7 @@ const ServersPage: FC = () => (
           className="space-y-5"
           data-aos="zoom-in-up"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           {[
             "No Session or Traffic Logging",
@@ -60,6 +62,7 @@ const ServersPage: FC = () => (
           className="self-center sm:self-start"
           data-aos="fade-up"
           data-aos-anchor-placement="top-bottom"
+          data-aos-offset="25"
         >
           View All Location
         </Button>

@@ -23,6 +23,7 @@ const DevicesSection: FC = () => (
         className="rounded-full w-fit"
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
+        data-aos-offset="25"
       >
         See All Devices <ArrowRightIcon />
       </Button>

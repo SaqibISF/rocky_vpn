@@ -17,14 +17,15 @@ const DownloadsPage: FC = () => (
           className="text-accent text-xl font-bold"
           data-aos="fade-up"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           Rocky VPN
         </span>
         <h1
           className="text-4xl sm:text-5xl font-bold leading-[3.5rem] md:leading-[5rem]"
           data-aos="fade-right"
-          data-aos-offset="300"
           data-aos-easing="ease-in-sine"
+          data-aos-offset="25"
         >
           Get the Ultimate High-Speed VPN for All Your Devices
         </h1>
@@ -32,6 +33,7 @@ const DownloadsPage: FC = () => (
           className="space-y-5"
           data-aos="zoom-in-up"
           data-aos-duration="1500"
+          data-aos-offset="25"
         >
           {[
             "Lightning-Fast VPN with No Lag",
@@ -48,7 +50,11 @@ const DownloadsPage: FC = () => (
           ))}
         </div>
       </div>
-      <div className="md:w-2/5 w-full" data-aos="fade-left">
+      <div
+        className="md:w-2/5 w-full"
+        data-aos="fade-left"
+        data-aos-offset="25"
+      >
         <Image
           className="max-w-[22.5rem] w-full h-auto m-auto"
           src="/mac-book.png"

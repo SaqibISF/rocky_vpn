@@ -89,8 +89,8 @@ const AdvantagesSection: FC<{
           data-aos={
             index % 2 === 1 ? "fade-left" : index % 2 === 0 ? "fade-right" : ""
           }
-          data-aos-offset="300"
           data-aos-easing="ease-in-sine"
+          data-aos-offset="25"
         >
           <span className="px-3">
             <Icon />

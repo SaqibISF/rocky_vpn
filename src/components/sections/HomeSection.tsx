@@ -21,14 +21,15 @@ const HomeSection: FC = () => (
         className="text-accent text-xl font-bold"
         data-aos="fade-up"
         data-aos-duration="1500"
+        data-aos-offset="25"
       >
         Rocky VPN
       </span>
       <h1
         className="text-5xl md:text-7xl font-bold leading-[3.5rem] md:leading-[5rem]"
         data-aos="fade-right"
-        data-aos-offset="300"
         data-aos-easing="ease-in-sine"
+        data-aos-offset="25"
       >
         Stay{" "}
         <span
@@ -36,6 +37,7 @@ const HomeSection: FC = () => (
           data-aos="flip-left"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="2000"
+          data-aos-offset="25"
         >
           Private
         </span>{" "}
@@ -45,6 +47,7 @@ const HomeSection: FC = () => (
         className="text-default-500 text-2xl font-medium leading-10"
         data-aos="zoom-in-up"
         data-aos-duration="1500"
+        data-aos-offset="25"
       >
         Surf the web without tracking with a VPN, protect your devices &
         identity with an all-in-one app.
@@ -58,6 +61,7 @@ const HomeSection: FC = () => (
         className="self-center sm:self-start"
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
+        data-aos-offset="25"
       >
         Get Started
       </Button>
@@ -65,6 +69,7 @@ const HomeSection: FC = () => (
         <div
           className="flex flex-col items-start justify-center gap-y-2"
           data-aos="fade-up-right"
+          data-aos-offset="25"
         >
           <div className="flex">
             {[
@@ -89,6 +94,7 @@ const HomeSection: FC = () => (
         <div
           className="flex flex-col items-start justify-center gap-y-2"
           data-aos="flip-down"
+          data-aos-offset="25"
         >
           <div className="text-yellow-500 text-lg md:text-3xl">★★★★☆</div>
           <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold">4.8</h3>
@@ -100,6 +106,7 @@ const HomeSection: FC = () => (
         <div
           className="flex flex-col items-start justify-center gap-y-2"
           data-aos="fade-up-left"
+          data-aos-offset="25"
         >
           <DownloadIcon />
           <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold">20+ M</h3>
@@ -112,6 +119,7 @@ const HomeSection: FC = () => (
     <div
       className="lg:w-2/5 w-full flex items-center justify-center"
       data-aos="fade-left"
+      data-aos-offset="25"
     >
       <Image
         className="max-w-lg w-full h-auto"
