@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, Suspense, useState } from "react";
 import { Section } from "@/components/sections";
 import { EnvelopeIcon } from "@/icons";
 import {
@@ -216,4 +216,10 @@ const LoginPage: FC = () => {
   );
 };
 
-export default LoginPage;
+const Page: FC = () => (
+  <Suspense>
+    <LoginPage />
+  </Suspense>
+);
+
+export default Page;
