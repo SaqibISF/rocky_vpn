@@ -1,8 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "../hero.ts";
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-accent: hsl(204 100% 75%);
+}
 
 :root {
+  --heroui-primary: 240 64% 29%;
   --background: #ffffff;
   --foreground: #0f0f0f;
 }
@@ -12,29 +19,6 @@
   src: url("/fonts/FiraCode-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
-}
-
-@font-face {
-  font-family: "FiraCode";
-  src: url("/fonts/FiraCode-VariableFont_wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
 }
 
 @theme inline {

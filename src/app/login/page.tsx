@@ -26,10 +26,12 @@ import axios, { AxiosError } from "axios";
 import { LOGIN_ROUTE } from "@/lib/constants";
 import { User } from "@/types/user";
 import { useUserCookie } from "@/hooks/use-cookies";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const LoginPage: FC = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect");
   type LoginData = { email: string; password: string };
 
   const { setUserCookie } = useUserCookie();
@@ -86,7 +88,7 @@ const LoginPage: FC = () => {
           email: res.user.email,
           access_token: res.access_token,
         });
-        router.push(DASHBOARD_PAGE_PATH);
+        router.push(redirect ? redirect : DASHBOARD_PAGE_PATH);
       } else {
         addToast({ color: "danger", description: res.message });
         setError("root", { type: "manual", message: res.message });

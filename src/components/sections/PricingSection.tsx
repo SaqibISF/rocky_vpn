@@ -44,7 +44,7 @@ const PricingSection: FC<{
       isCenterGradient={isCenterGradient}
     >
       {!isPlansLoading && plans.length === 0 && (
-        <Card data-aos="fade-up" data-aos-duration="1500" data-aos-offset="15">
+        <Card data-aos="fade-up" data-aos-duration="1500" data-aos-offset="25">
           <CardBody>
             <p className="text-lg font-medium text-default-500">
               No plans available at the moment. Please check back later.
@@ -122,7 +122,13 @@ const PricingSection: FC<{
             <CardFooter className="p-0">
               <Button
                 as={Link}
-                href={user ? CHECKOUT_PAGE_PATH(plan.id) : LOGIN_PAGE_PATH}
+                href={
+                  user
+                    ? CHECKOUT_PAGE_PATH(plan.id)
+                    : `${LOGIN_PAGE_PATH}?redirect=${CHECKOUT_PAGE_PATH(
+                        plan.id
+                      )}`
+                }
                 variant="bordered"
                 radius="full"
                 className="w-full"

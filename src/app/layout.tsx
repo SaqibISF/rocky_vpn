@@ -4,17 +4,12 @@ import "aos/dist/aos.css";
 import type { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
 import { cn } from "@/lib/utils";
-import { Fira_Code, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import MainLayout from "@/components/MainLayout";
 
 export const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-});
-
-export const fontMono = Fira_Code({
-  subsets: ["latin"],
-  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {

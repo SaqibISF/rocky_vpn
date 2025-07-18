@@ -9,15 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroui/react": "^2.7.5",
-    "@heroui/theme": "^2.4.12",
+    "@heroui/react": "^2.8.1",
     "@reduxjs/toolkit": "^2.6.1",
     "@stripe/react-stripe-js": "^3.6.0",
     "@stripe/stripe-js": "^7.2.0",
-    "@tailwindcss/typography": "^0.5.16",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.8.4",
-    "framer-motion": "^12.6.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.6",
     "next": "15.2.4",
     "next-themes": "^0.4.6",
     "playwright": "^1.52.0",
@@ -27,10 +26,13 @@
     "react-hook-form": "^7.55.0",
     "react-redux": "^9.2.0",
     "stripe": "^18.0.0",
-    "swr": "^2.3.3"
+    "swr": "^2.3.3",
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -38,8 +40,7 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
